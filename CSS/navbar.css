@@ -1,0 +1,111 @@
+/* Root */
+
+:root {
+    /* Navbar Dimensions */
+    --nav-width: 320px;
+    --nav-height: 100vh;
+
+}
+
+@media screen and (orientation: landscape) {
+    aside[id="Nav"] {
+        height: var(--nav-height);
+        width: var(--nav-width);
+        /* display: none; */
+        position: fixed;
+        z-index: 1;
+        
+        overflow-x: hidden;
+        overflow-y: hidden;
+        
+        margin-left: -320px;
+        transition: margin-left 300ms  ease-in-out;
+    }
+    
+    /* NavBar */
+      
+    .navbar {
+        height: inherit;
+        width: 320px;
+        background-color: var(--background-secondary);
+    }
+    
+    article {
+        display: flex;
+        flex-direction: row;
+        height: 50px;
+        padding: 16px;
+    }
+    
+    article button {
+        margin-left: auto;
+    }
+    
+    article a {
+        display: inline-flex;
+        width: 178px;
+    }
+    
+    .item {
+        height: 50px;
+        padding: 4px 16px;
+    }
+      
+    .link {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        border-radius: 4px;
+    }
+      
+    a > legend {
+        margin: auto auto auto 8px;
+        font-size: 18px;
+    }
+    
+    #active {
+        background-color: hsl(10, 100%, 60%);
+    }
+
+    /* #active::after {
+        content: "";
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 288px;
+        height: 50px;
+        background-color: hsl(10, 100%, 60%);
+        border-radius: 4px;
+        filter: blur(10px);
+    } */
+    
+    article[class="item dropdown"] {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+    }
+    
+    article[class="item dropdown"] > button, article[class="item dropdown"] > div[id="dropdown"] > a {
+        display: flex;
+        flex-direction: row;
+        height: 50px;
+    }
+    
+    article[class="item dropdown"] > button > svg[id="drop"] {
+        transition: 400ms ease-in-out;
+    }
+    
+    #dropdown {
+        display: none;
+    }
+    
+    #dropdown.show {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+    }
+
+    .indicator {
+        display: none;
+    }
+}

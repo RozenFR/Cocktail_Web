@@ -1,0 +1,18 @@
+main {
+    width: var(--vw);
+    height: 100vh;
+}
+
+@media screen and (orientation: landscape) {
+    div[role="alert"] {
+        position: relative;
+        top: 70px;
+        
+        margin: 4px 8px 16px;
+        padding: 16px;
+        text-align: center;
+    
+        background-color: hsl(10, 100%, 60%);
+        border-radius: 4px;
+    }
+}
