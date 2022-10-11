@@ -20,14 +20,14 @@ function dropdown() {
 function openProfile() {
     document.getElementById("Profile_Box").style.display = "block";
     document.getElementById("Open_Profile").style.display = "none";
-    document.getElementById("Close_Profile").style.display = "block";  
+    document.getElementById("Close_Profile").style.display = "block";
 }
 
 function closeProfile() {
     document.getElementById("Profile_Box").style.display = "none";
     document.getElementById("Open_Profile").style.display = "block";
     document.getElementById("Close_Profile").style.display = "none";
-    document.getElementById("Theme_Box").style.display = "none";   
+    document.getElementById("Theme_Box").style.display = "none";
 }
 
 function active() {
@@ -36,17 +36,18 @@ function active() {
     var href = urlArray[urlArray.length - 1];
 
     switch (href) {
-        case 'index.php':
+        default:
             document.getElementsByName('Link')[0].id = 'active';
-            document.getElementsByClassName('indicator')[0].style.transform = "translateX(-140px)";
-        break;
+            break;
+        case 'index.php':
+            console.log(document.getElementsByName('Link'));
+            document.getElementsByName('Link')[0].id = 'active';
+            break;
         case 'Navigation.php':
             document.getElementsByName('Link')[1].id = 'active';
-            document.getElementsByClassName('indicator')[0].style.transform = "translateX(-70px)";
-        break;
+            break;
         case 'Recette.php':
             document.getElementsByName('Link')[2].id = 'active';
-            document.getElementsByClassName('indicator')[0].style.transform = "translateX(0px)";
-        break;
+            break;
     }
 }

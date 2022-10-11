@@ -11,8 +11,9 @@
         @import url('/CSS/index.css');
         @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@500&display=swap');
     </style>
+    <script defer src="/JS/theme.js"></script>
 </head>
-<body onload="active();">
+<body onload="active();onThemeSwitch();">
     <!-- Aside -->
     <?php 
         $path = $_SERVER['DOCUMENT_ROOT'];

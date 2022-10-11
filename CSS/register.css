@@ -1,78 +1,78 @@
 @media screen and (orientation: landscape) {
-    
+
     form[title="Register"] {
         position: relative;
-        top: 70px;
+        top: 60px;
         display: flex;
         flex-direction: column;
         width: 510px;
-        height: calc(100vh - 70px);
+        height: calc(100vh - 60px);
         margin: auto;
         margin-top: 0;
     }
-    
-    form[title="Register"] > input, 
-    form[title="Register"] > button, 
-    form[title="Register"] > legend {
-        min-width: calc(100% - 2rem - 2px);
-        min-height: calc(54px - 2rem);
+
+    form[title="Register"]>input,
+    form[title="Register"]>button,
+    form[title="Register"]>legend {
+        min-width: 100%;
+        min-height: 56px;
         margin-bottom: 10px;
     }
 
-    form[title="Register"] > .inputBox {
-        min-width: calc(100% - 2rem - 2px);
-        min-height: calc(60px - 2rem);
+    form[title="Register"]>.inputBox {
+        min-width: 100%;
+        min-height: 56px;
         margin-bottom: 10px;
     }
 
-    form[title="Register"] > legend[title="Create"] {
+    form[title="Register"]>legend[title="Create"] {
         display: flex;
         align-items: center;
         margin: 0;
     }
 
-    legend[title="Create"] > h2 {
+    legend[title="Create"]>h2 {
         font-size: 21px;
         margin-top: auto;
         margin-bottom: auto;
         margin-right: auto;
     }
 
-    form[title="Register"] > input,
-    form[title="Register"] > .inputBox > input {
-        border: hsl(0, 0%, 25%) 1px solid;
+    form[title="Register"]>input,
+    form[title="Register"]>.inputBox>input {
+        border: var(--buttons) 1px solid;
         border-radius: 4px;
         background-color: var(--background-secondary);
         padding: 27px 1rem 5px 1rem;
     }
 
-    form[title="Register"] > input:hover,
-    form[title="Register"] > .inputBox > input:hover,
+    form[title="Register"]>input:hover,
+    form[title="Register"]>.inputBox>input:hover,
     span[title="Gender_Field"]:hover,
-    input:placeholder-shown:hover {
-        border: hsl(10, 100%, 60%) 1px solid;
+    form[title="Register"] input:placeholder-shown:hover {
+        border: var(--accent) 1px solid;
     }
 
     input[title="Submit"]:hover {
-        background: repeating-linear-gradient(90deg,#ff5533,#f3de2c,#ff5533);
+        background: repeating-linear-gradient(90deg, #ff5533, #f3de2c, #ff5533);
         animation: animate 2s linear infinite;
     }
 
-    form[title="Register"] > input::placeholder {
+    form[title="Register"]>input::placeholder {
         color: white;
     }
 
-    form[title="Register"] > input[type="date"] {
+    form[title="Register"]>input[type="date"] {
         padding: 1rem;
-        color-scheme: dark;
+        color-scheme: var(--color-scheme);
     }
 
-    form[title="Register"] > .inputBox > input {
-        width: calc(100% - 2rem - 2px);
-        height: calc(54px - 2rem);
+    form[title="Register"]>.inputBox>input {
+        width: 100%;
+        height: 56px;
     }
 
-    form[title="Register"] > .inputBox > span {
+    form[title="Register"]>.inputBox>span {
         position: absolute;
         left: 0;
         padding: 27px 1rem 5px 1rem;
@@ -81,11 +81,11 @@
         height: calc(56px - 32px);
     }
 
-    form[title="Register"] > .inputBox > span {
+    form[title="Register"]>.inputBox>span {
         display: inline;
     }
 
-    form[title="Register"] > .inputBox > span > legend[class="required"] {
+    form[title="Register"]>.inputBox>span>legend[class="required"] {
         position: relative;
         left: 85%;
         bottom: 1rem;
@@ -96,60 +96,60 @@
         font-size: 12px;
     }
 
-    input:placeholder-shown {
-        border: hsl(0, 0%, 25%) 1px solid;
+    form[title="Register"] input:placeholder-shown {
+        border: var(--buttons) 1px solid;
     }
 
-    form[title="Register"] > .inputBox > input:focus ~ span > legend {
+    form[title="Register"]>.inputBox>input:focus~span>legend {
         transition: 0.2s;
     }
 
-    form[title="Register"] > .inputBox > input:focus ~ span > legend[class="required"] {
+    form[title="Register"]>.inputBox>input:focus~span>legend[class="required"] {
         display: none;
         transition: 0s;
     }
 
-    form[title="Register"] > .inputBox > input:focus ~ span > legend {
-        color: hsl(10, 100%, 60%) !important;
+    form[title="Register"]>.inputBox>input:focus~span>legend {
+        color: var(--accent) !important;
         transform: translateY(-1rem) !important;
         font-size: 0.75rem !important;
     }
 
-    form[title="Register"] > .inputBox > input:valid ~ span[title="required_span"] > legend,
-    form[title="Register"] > .unrequired > input:not(:placeholder-shown):valid ~ span > legend,
-    form[title="Register"] > .unrequired > input:not(:placeholder-shown):invalid ~ span > legend {
-        color: hsl(10, 100%, 60%);
+    form[title="Register"]>.inputBox>input:valid~span[title="required_span"]>legend,
+    form[title="Register"]>.unrequired>input:not(:placeholder-shown):valid~span>legend,
+    form[title="Register"]>.unrequired>input:not(:placeholder-shown):invalid~span>legend {
+        color: var(--accent);
         transform: translateY(-1rem);
         font-size: 0.75rem;
     }
 
-    form[title="Register"] > .inputBox > input:valid ~ span[title="required_span"] > .required {
+    form[title="Register"]>.inputBox>input:valid~span[title="required_span"]>.required {
         display: none;
     }
 
-    form[title="Register"] > span[title="Gender_Field"][class="valid"],
-    form[title="Register"] > input[type="date"][class="valid"],
-    form[title="Register"] > .inputBox > input:not(:placeholder-shown):valid {
+    form[title="Register"]>span[title="Gender_Field"][class="valid"],
+    form[title="Register"]>input[type="date"][class="valid"],
+    form[title="Register"]>.inputBox>input:not(:placeholder-shown):valid {
         border: green 1px solid;
     }
 
-    form[title="Register"] > span[title="Gender_Field"][class="invalid"],
-    form[title="Register"] > .inputBox > input[class="invalid"],
-    form[title="Register"] > .unrequired > input:not(:placeholder-shown):invalid,
-    form[title="Register"] > input[type="date"]:invalid {
+    form[title="Register"]>span[title="Gender_Field"][class="invalid"],
+    form[title="Register"]>.inputBox>input[class="invalid"],
+    form[title="Register"]>.unrequired>input:not(:placeholder-shown):invalid,
+    form[title="Register"]>input[type="date"]:invalid {
         border: red 1px solid;
     }
 
-    form[title="Register"] > input[title="Submit"] {
-        background-color: hsl(10, 100%, 60%);
+    form[title="Register"]>input[title="Submit"] {
+        background-color: var(--accent);
         min-width: calc(100% - 2rem);
         min-height: 56px;
         padding: 0;
         border: 0px;
     }
 
-    form[title="Register"] > button {
-        background-color: hsl(0, 0%, 25%);
+    form[title="Register"]>button {
+        background-color: var(--buttons);
         max-height: 56px;
         border-radius: 4px;
     }
@@ -159,12 +159,12 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
         column-gap: 0.25rem;
         margin-bottom: 10px;
-        border: hsl(0, 0%, 25%) 1px solid;
+        border: var(--buttons) 1px solid;
         border-radius: 4px;
         background-color: var(--background-secondary);
     }
 
-    span[title="Gender_Field"] > div {
+    span[title="Gender_Field"]>div {
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
@@ -180,7 +180,8 @@
         opacity: 0;
     }
 
-    input + .Radio_Checked, input[type="radio"]:checked + .Radio_Checked + .Radio {
+    input+.Radio_Checked,
+    input[type="radio"]:checked+.Radio_Checked+.Radio {
         display: none;
     }
 
@@ -188,15 +189,16 @@
         cursor: pointer;
     }
 
-    input[type="radio"]:checked + .Radio_Checked {
+    input[type="radio"]:checked+.Radio_Checked {
         display: inline;
-    }   
+    }
 }
 
 @keyframes animate {
     0% {
         background-position-x: 0;
     }
+
     100% {
         background-position-x: 510px;
     }

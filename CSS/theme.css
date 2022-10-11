@@ -2,8 +2,7 @@
     #Theme_Box {
         display: none;
         padding: 24px;
-        width: 240px;
-        /* height: calc(50px + 100px); */
+        width: calc(240px + 2 * 24px);
         border-radius: 4px;
         background-color: var(--background-secondary);
         position: absolute;
@@ -19,21 +18,21 @@
         cursor: pointer;
     }
 
-    div[title="Return"] > button {
+    div[title="Return"]>button {
         width: 50px;
         height: 50px;
         border-radius: 50%;
     }
 
-    div[title="Return"] > button > svg {
-        margin: var(--svg-margin);  
+    div[title="Return"]>button>svg {
+        margin: var(--svg-margin);
     }
 
-    div[title="Return"]:hover > button {
-        background-color: hsl(0, 0%, 25%);
+    div[title="Return"]:hover>button {
+        background-color: var(--buttons);
     }
 
-    div[title="Return"] > legend {
+    div[title="Return"]>legend {
         display: flex;
         align-items: center;
         margin-left: 0.5rem;
@@ -43,7 +42,7 @@
         height: 100%;
     }
 
-    div[id="Theme_Field"] > div {
+    div[id="Theme_Field"]>div {
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
@@ -52,11 +51,11 @@
         cursor: pointer;
     }
 
-    div[id="Theme_Field"] > div:hover {
-        background-color: hsl(0, 0%, 25%);
+    div[id="Theme_Field"]>div:hover {
+        background-color: var(--buttons);
     }
 
-    div[id="Theme_Field"] > div > legend {
+    div[id="Theme_Field"]>div>legend {
         height: 20px;
         margin: 15px auto 15px 1rem;
     }

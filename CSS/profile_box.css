@@ -2,26 +2,26 @@
     div[title="Profile_Box"] {
         display: none;
         padding: 24px;
-        width: 240px;
-        height: 100px;
+        width: calc(240px + 2 * 24px);
+        height: calc(100px + 2 * 24px);
         border-radius: 4px;
         background-color: var(--background-secondary);
         position: absolute;
         right: 20px;
         top: 70px;
     }
-    
+
     div[title="Profile_Box"] svg {
         margin: 7.5px;
     }
-    
-    div[title="Profile_Box"] > span {
+
+    div[title="Profile_Box"]>span {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    
-    
-    span[title="Settings/Theme"] > div {
+
+
+    span[title="Settings/Theme"]>div {
         width: 115px;
         display: flex;
         flex-wrap: nowrap;
@@ -29,18 +29,18 @@
         cursor: pointer;
     }
 
-    span[title="Settings/Theme"] > div:last-of-type {
+    span[title="Settings/Theme"]>div:last-of-type {
         position: relative;
     }
-    
-    span[title="Settings/Theme"] > div:hover {
-        background-color: hsl(0, 0%, 25%);
+
+    span[title="Settings/Theme"]>div:hover {
+        background-color: var(--buttons);
     }
-    
+
     span[title="Settings/Theme"] legend {
         margin: auto 0px auto 0px;
     }
-    
+
     span[title="Login/Register"] {
         margin-top: calc(100px - 40px - 50px);
     }
@@ -52,8 +52,8 @@
     div[title="Theme"] {
         margin-left: 5px;
     }
-    
-    span[title="Login/Register"] > a {
+
+    span[title="Login/Register"]>a {
         width: 115px;
         height: 50px;
         display: flex;
@@ -62,14 +62,14 @@
         border-radius: 4px;
         cursor: pointer;
     }
-    
+
     a[title="Login"] {
-        background-color: hsl(10, 100%, 60%);
+        background-color: var(--accent);
         margin-right: 5px;
     }
-    
+
     a[title="Register"] {
-        background-color: hsl(0, 0%, 25%);
+        background-color: var(--buttons);
         margin-left: 5px;
     }
 }

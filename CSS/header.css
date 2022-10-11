@@ -1,42 +1,51 @@
-:root {
-    /* Dimensions */
-    --header-width: 100vw;
-    --header-height: 70px;
-}
-
 @media screen and (orientation: landscape) {
     header {
         position: fixed;
         left: 0;
-        height: 50px;
-        width: calc(100vw - 115.5px);
-    
+        height: 60px;
+        width: 100vw;
+
         padding-top: 10px;
         padding-bottom: 10px;
         padding-left: 51.5px;
         padding-right: 64px;
-    
+
         display: flex;
         align-items: center;
     }
 
-    header > a > legend { 
+    header[id="Topbar"]>button>svg {
+        margin: 7.5px;
+    }
+
+    header>a>legend {
         font-size: 18px;
         height: 25px;
         margin-top: 18px;
         margin-bottom: 7px;
     }
-    
-    button {
-        height: 100%;
+
+    header[id="Topbar"]>button {
+        height: 40px;
+        width: 40px;
         aspect-ratio: 1/1;
         border-radius: 50%;
     }
-    
-    button:hover {
-        background-color: hsl(220, 10%, 15%);
+
+    button {
+        height: 50px;
+        width: 50px;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
     }
-    
+
+    button:hover,
+    #Open_Profile:hover,
+    #Close_Profile:hover,
+    input[title="Search"]:hover {
+        background-color: var(--buttons) !important;
+    }
+
     #Navigation {
         height: 100%;
         display: inline-flex;
@@ -51,33 +60,31 @@
         align-items: center;
         vertical-align: middle;
     }
-    
+
     svg {
         width: 25px;
         height: 25px;
         margin: 12.5px;
     }
-    
+
     img {
         width: 35px;
         height: 35px;
         margin: calc((50px - 35px) / 2);
     }
-    
-    
+
+
     #Search {
-        background-color: hsl(220, 10%, 15%);
-        color: inherit;
         cursor: text;
-    
+
         width: 300px;
         height: 40px;
         margin: 5px 5px 5px auto;
-    
+
         border-radius: 1.25rem;
         border-radius: 9999px;
     }
-    
+
     svg[title="Lens"] {
         position: relative;
         top: -40px;
@@ -85,28 +92,30 @@
         min-height: 25px;
         margin: 7.5px 12.5px;
     }
-    
+
     input[title="Search"] {
+        background-color: var(--background-secondary) !important;
         padding-left: 50px;
         padding-right: 50px;
         background: none;
-        width: calc(200px - 2px);
+        width: 300px;
         border-radius: inherit;
-        height: calc(40px - 2px);
+        height: 40px;
         z-index: 1;
         overflow: hidden;
         font-family: 'Poppins', sans-serif;
         font-weight: normal;
     }
-    
+
     input[title="Search"]::placeholder {
         font-family: 'Poppins', sans-serif;
         font-size: 16px;
-        color: white;
+        color: var(--font-color);
     }
 
-    #Open_Profile, #Close_Profile {
-        background-color: hsl(220, 10%, 15%);
+    #Open_Profile,
+    #Close_Profile {
+        background-color: var(--background-secondary);
         width: 40px;
         height: 40px;
         border-radius: 50%;
@@ -117,7 +126,8 @@
         display: none;
     }
 
-    #Open_Profile > svg, #Close_Profile > svg {
+    #Open_Profile>svg,
+    #Close_Profile>svg {
         margin: 7.5px;
     }
 }

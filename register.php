@@ -10,7 +10,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@500&display=swap');
     </style>
 </head>
-<body>
+<body onload="onThemeSwitch();">
     <?php 
         $path = $_SERVER['DOCUMENT_ROOT'];
         $path .= "/HTML/navbar.html";
@@ -24,7 +24,7 @@
         ?>
         <?php 
             $path = $_SERVER['DOCUMENT_ROOT'];
-            $path .= "/PHP/register.php";
+            $path .= "/PHP/register_form.php";
             include_once($path)
         ?>
     </main>

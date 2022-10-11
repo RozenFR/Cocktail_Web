@@ -2,6 +2,10 @@
     /* Dimensions */
     --vw: 100vw;
     --vh: 100vh;
+    --header-height: 60px;
+    --header-width: 100vw;
+    --nav-height: 100vh;
+    --nav-width: 320px;
 
     /* SVG */
     --svg: 25px;
@@ -9,67 +13,82 @@
 
     /* Font Properties */
     --font: 16px;
-        
-    /* Colors */
-    --black:        hsl(0, 0%, 0%);
-    --black-1:      hsl(0, 0%, 10%);
-    --jet:          hsl(0, 0%, 20%);
-    --davy-gray:    hsl(0, 0%, 30%);
-    --dim-gray:     hsl(0, 0%, 40%);
-    --gray:         hsl(0, 0%, 50%);
-    --spanish-gray: hsl(0, 0%, 60%);
-    --silver:       hsl(0, 0%, 70%);
-    --lightgray:    hsl(0, 0%, 80%);
-    --gainsboro:    hsl(0, 0%, 90%);
-    --white:        hsl(0, 0%, 100%);
+    --font-color: var(--white);
 
-    --orange:       hsl(10, 100%, 60%);
-    
+    /* Colors */
+    --black: hsl(0, 0%, 0%);
+    --eerie-black: hsl(0, 0%, 10%);
+    --jet: hsl(0, 0%, 20%);
+    --davy-gray: hsl(0, 0%, 30%);
+    --dim-gray: hsl(0, 0%, 40%);
+    --gray: hsl(0, 0%, 50%);
+    --spanish-gray: hsl(0, 0%, 60%);
+    --silver: hsl(0, 0%, 70%);
+    --lightgray: hsl(0, 0%, 80%);
+    --gainsboro: hsl(0, 0%, 90%);
+    --white: hsl(0, 0%, 100%);
+
+    --xiketic: hsl(262, 20%, 10%);
+    --raisin-black: hsl(260, 20%, 15%);
+    --dark-purple: #30293d;
+
+    /* Accents */
+    --orange-soda: hsl(10, 100%, 60%);
+    --red-purple: hsl(330, 100%, 40%);
+    --cyan: hsl(190, 100%, 45%);
+    --pacific-blue: hsl(190, 60%, 45%);
+
+    --accent: var(--pacific-blue);
+
     /* Background Colors */
-    --background-primary: hsl(260, 20%, 10%);
-    --background-secondary: hsl(260, 20%, 12.5%);
-    
+    --background-primary: var(--xiketic);
+    --background-secondary: var(--raisin-black);
+
     /* Transitions */
     --speed-200ms: 200ms;
     --speed-400ms: 400ms;
-    --speed-600ms: 600ms;  
+    --speed-600ms: 600ms;
 }
 
 /* Dark Theme */
 
 .dark {
-    /* Font Properties */
-    --text: var(--white);
+    --font-color: var(--white);
+    --background-primary: var(--eerie-black);
+    --background-secondary: var(--jet);
+    --buttons: var(--davy-gray);
+    --color-scheme: dark;
+}
 
-    /* Backgrounds */
-    --background: var(--darkgrey);
-    --overlay1: rgba(255, 255, 255, 0.05);
-    --overlay2: rgba(255, 255, 255, 0.07);
-    --overlay3: rgba(255, 255, 255, 0.08);
-    --overlay4: rgba(255, 255, 255, 0.09);
-    --overlay5: rgba(255, 255, 255, 0.11);
-    --overlay6: rgba(255, 255, 255, 0.12);
-    --overlay7: rgba(255, 255, 255, 0.14);
-    --overlay8: rgba(255, 255, 255, 0.15);
-    --overlay9: rgba(255, 255, 255, 0.16);
-
-    /* Shadows */
-    --shadow: transparent;
+/* Slate Theme */
+.slate {
+    --font-color: var(--white);
+    --background-primary: var(--xiketic);
+    --background-secondary: var(--raisin-black);
+    --buttons: var(--dark-purple);
+    --color-scheme: dark;
 }
 
 /* Light Theme */
-
+.light {
+    --font-color: var(--black);
+    --background-primary: var(--white);
+    --background-secondary: var(--gainsboro);
+    --buttons: var(--lightgray);
+    --color-scheme: light;
+}
 
 * {
     margin: 0;
     padding: 0;
     border: 0;
-    color: white;
+    color: var(--font-color);
     text-decoration: none;
     background-color: transparent;
     /* font-family: 'Poppins', sans-serif; */
     font-family: 'Spartan', sans-serif;
     font-size: var(--font);
+    box-sizing: border-box;
 }
 
 body {
@@ -88,8 +107,4 @@ main {
 
 button {
     cursor: pointer;
-}
-
-header {
-    height: 70px;
 }
