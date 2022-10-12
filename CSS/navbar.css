@@ -1,12 +1,3 @@
-/* Root */
-
-:root {
-    /* Navbar Dimensions */
-    --nav-width: 320px;
-    --nav-height: 100vh;
-
-}
-
 @media screen and (orientation: landscape) {
     aside[id="Nav"] {
         height: var(--nav-height);

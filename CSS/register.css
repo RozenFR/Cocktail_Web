@@ -172,7 +172,7 @@
         height: 54px;
     }
 
-    input[type="radio"] {
+    form[title="Register"] input[type="radio"] {
         position: absolute;
         width: 25px;
         height: 25px;
@@ -183,10 +183,6 @@
     input+.Radio_Checked,
     input[type="radio"]:checked+.Radio_Checked+.Radio {
         display: none;
-    }
-
-    input[type="radio"] {
-        cursor: pointer;
     }
 
     input[type="radio"]:checked+.Radio_Checked {

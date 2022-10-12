@@ -10,7 +10,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@500&display=swap');
     </style>
 </head>
-<body onload="onThemeSwitch();">
+<body onload="active();onThemeSwitch();onAccentSwitch();">
     <?php 
         $path = $_SERVER['DOCUMENT_ROOT'];
         $path .= "/HTML/navbar.html";

@@ -33,10 +33,16 @@
     --dark-purple: #30293d;
 
     /* Accents */
+    --red: hsl(0, 70%, 50%);
     --orange-soda: hsl(10, 100%, 60%);
-    --red-purple: hsl(330, 100%, 40%);
+    --amber-yellow: hsl(46, 100%, 50%);
+    --lincoln-green: hsl(120, 100%, 20%);
     --cyan: hsl(190, 100%, 45%);
     --pacific-blue: hsl(190, 60%, 45%);
+    --blue: hsl(240, 70%, 50%);
+    --tyrian-purple: hsl(330, 100%, 25%);
+    --red-purple: hsl(330, 100%, 40%);
+
 
     --accent: var(--pacific-blue);
 
@@ -106,5 +112,9 @@ main {
 }
 
 button {
+    cursor: pointer;
+}
+
+input[type="radio"] {
     cursor: pointer;
 }

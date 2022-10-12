@@ -1,5 +1,23 @@
 var theme = localStorage.getItem('theme') || (temp = 'slate', localStorage.setItem('theme', temp), temp);
+var accent = localStorage.getItem('accent') || (temp = 'orange-soda', localStorage.setItem('accent', temp), temp)
 const bodyClass = document.body.classList;
+
+async function onAccentSwitch() {
+    const inputs = document.querySelectorAll("input[name='theme']")
+    const root = document.querySelector(":root")
+    root.style.setProperty("--accent", `var(--${accent})`);
+
+    for (const input of inputs) {
+        if (input.value == accent) {
+            input.setAttribute("checked", "true");
+        }
+        input.onchange = e => {
+            var value = e.target.value;
+            root.style.setProperty("--accent", `var(--${value})`);
+            localStorage.setItem('accent', `${value}`);
+        }
+    }
+}
 
 async function onThemeSwitch() {
     bodyClass.add(theme);

@@ -13,7 +13,7 @@
     </style>
     <script defer src="/JS/theme.js"></script>
 </head>
-<body onload="active();onThemeSwitch();">
+<body onload="active();onThemeSwitch();onAccentSwitch();">
     <!-- Aside -->
     <?php 
         $path = $_SERVER['DOCUMENT_ROOT'];
