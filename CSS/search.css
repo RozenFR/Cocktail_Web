@@ -1,1 +1,15 @@
+.flex-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 100px 5% 60px 5%;
+    gap: 5px;
+}
+
+.flex-item {
+    flex: 0 0 30%;
+    padding: 10px;
+    background-color: var(--background-secondary);
+}
 
