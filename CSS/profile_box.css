@@ -2,7 +2,7 @@
     div[title="Profile_Box"] {
         display: none;
         padding: 24px;
-        width: calc(240px + 2 * 24px);
+        width: calc(290px + 2 * 24px);
         height: calc(100px + 2 * 24px);
         border-radius: 4px;
         background-color: var(--background-secondary);
@@ -22,7 +22,7 @@
 
 
     span[title="Settings/Theme"]>div {
-        width: 115px;
+        width: 140px;
         display: flex;
         flex-wrap: nowrap;
         border-radius: 4px;
@@ -54,7 +54,7 @@
     }
 
     span[title="Login/Register"]>a {
-        width: 115px;
+        width: 140px;
         height: 50px;
         display: flex;
         align-items: center;

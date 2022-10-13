@@ -9,7 +9,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path data-v-20f285ec="" d="M19 12H5m7 7-7-7 7-7"/>
             </svg>
-            <h2>Create Account</h2>
+            <h2>Créer un compte</h2>
         </legend>
         <span class="inputBox">
             <input name="username" type="text" required="required"
@@ -27,7 +27,7 @@
             ?>
             />
             <span title="required_span">
-                <legend>Username</legend>
+                <legend>Identifiant</legend>
                 <legend class="required">Obligatoire</legend>
             </span>
         </span>
@@ -65,7 +65,7 @@
             ?>
             />
             <span title="required_span">
-                <legend>Password</legend>
+                <legend>Mot de passe</legend>
                 <legend class="required">Obligatoire</legend>
             </span>
         </span>
@@ -85,7 +85,7 @@
             ?>
             />
             <span>
-                <legend>Name</legend>
+                <legend>Nom</legend>
             </span>
         </span>
         <span class="inputBox unrequired">
@@ -104,7 +104,7 @@
             ?>
             />
             <span>
-                <legend>First Name</legend>
+                <legend>Prénom</legend>
             </span>
         </span>
         <input name="date" type="date"
@@ -154,7 +154,7 @@
                 <svg class="Radio" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="3" y="3" width="18" height="18" fill="transparent" rx="2" ry="2"/>
                 </svg>
-                <label>Man</label>
+                <label>Homme</label>
             </div>
             <div>
                 <input value="f" type="radio" name="sex"
@@ -176,33 +176,11 @@
                 <svg class="Radio" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="3" y="3" width="18" height="18" fill="transparent" rx="2" ry="2"/>
                 </svg>
-                <label>Woman</label>
-            </div>
-            <div>
-                <input value="o" type="radio" name="sex"
-                <?php
-                    if(isset($_POST['submit'])) {
-                        if(isset($_POST['sex'])) {
-                            $sex = $_POST['sex'];
-                            if($sex == 'o') {
-                              echo "checked='checked'";
-                            }
-                        }
-                    }
-                ?>
-                />
-                <svg class="Radio_Checked" viewBox="0 0 24 24" fill="none">
-                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="m9 11 3 3L22 4" stroke="#FF6740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <svg class="Radio" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="3" width="18" height="18" fill="transparent" rx="2" ry="2"/>
-                </svg>
-                <label>Other</label>
+                <label>Femme</label>
             </div>
         </span>
-        <input title="Submit" type="submit" name="submit"/>
-        <button>Log In Instead</button>
+        <input title="Submit" type="submit" name="submit" value="S'inscrire"/>
+        <a href="/login.php">Se connecter</a>
     </form>
     <?php 
         if(isset($_POST['submit'])) {

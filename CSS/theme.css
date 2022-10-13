@@ -2,7 +2,7 @@
     #Theme_Box {
         display: none;
         padding: 24px;
-        width: calc(240px + 2 * 24px);
+        width: calc(290px + 2 * 24px);
         border-radius: 4px;
         background-color: var(--background-secondary);
         position: absolute;
