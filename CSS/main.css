@@ -35,17 +35,31 @@
     /* Accents */
     --red: hsl(0, 70%, 50%);
     --orange-soda: hsl(10, 100%, 60%);
-    --amber-yellow: hsl(46, 100%, 50%);
+    --amber-yellow: hsl(45, 100%, 50%);
+    --yellow: hsl(60, 100%, 50%);
     --lincoln-green: hsl(120, 100%, 20%);
-    --cyan: hsl(190, 100%, 45%);
+    --green: hsl(120, 100%, 30%);
+    --cyan: hsl(190, 60%, 65%);
     --pacific-blue: hsl(190, 60%, 45%);
     --blue: hsl(240, 70%, 50%);
+    --lightblue: hsl(240, 70%, 60%);
     --tyrian-purple: hsl(330, 100%, 25%);
+    --purple: hsl(300, 100%, 25%);
     --red-purple: hsl(330, 100%, 40%);
+    --pink: hsl(330, 100%, 60%);
 
+    --accent: var(--orange-soda);
+    /* Gradient accents */
+    --red-gradient: repeating-linear-gradient(90deg, var(--red), var(--orange-soda), var(--red));
+    --orange-soda-gradient: repeating-linear-gradient(90deg, var(--orange-soda), var(--amber-yellow), var(--orange-soda));
+    --amber-yellow-gradient: repeating-linear-gradient(90deg, var(--amber-yellow), var(--yellow), var(--amber-yellow));
+    --lincoln-green-gradient: repeating-linear-gradient(90deg, var(--lincoln-green), var(--green), var(--lincoln-green));
+    --pacific-blue-gradient: repeating-linear-gradient(90deg, var(--pacific-blue), var(--cyan), var(--pacific-blue));
+    --blue-gradient: repeating-linear-gradient(90deg, var(--blue), var(--lightblue), var(--blue));
+    --tyrian-purple-gradient: repeating-linear-gradient(90deg, var(--tyrian-purple), var(--purple), var(--tyrian-purple));
+    --red-purple-gradient: repeating-linear-gradient(90deg, var(--red-purple), var(--pink), var(--red-purple));
 
-    --accent: var(--pacific-blue);
-
+    --accent-gradient: var(--orange-soda-gradient);
     /* Background Colors */
     --background-primary: var(--xiketic);
     --background-secondary: var(--raisin-black);
@@ -117,4 +131,10 @@ button {
 
 input[type="radio"] {
     cursor: pointer;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px var(--background-secondary) inset;
+    box-shadow: 0 0 0px 1000px var(--background-secondary) inset;
+    -webkit-text-fill-color: var(--font-color);
 }

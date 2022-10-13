@@ -1,12 +1,13 @@
 var theme = localStorage.getItem('theme') || (temp = 'slate', localStorage.setItem('theme', temp), temp);
-var accent = localStorage.getItem('accent') || (temp = 'orange-soda', localStorage.setItem('accent', temp), temp)
+var accent = localStorage.getItem('accent') || (temp = 'orange-soda', localStorage.setItem('accent', temp), temp);
+var accent_gradient = `${accent}` + "-gradient";
 const bodyClass = document.body.classList;
 
 async function onAccentSwitch() {
     const inputs = document.querySelectorAll("input[name='theme']")
     const root = document.querySelector(":root")
     root.style.setProperty("--accent", `var(--${accent})`);
-
+    root.style.setProperty("--accent-gradient", `var(--${accent_gradient})`);
     for (const input of inputs) {
         if (input.value == accent) {
             input.setAttribute("checked", "true");
@@ -14,6 +15,7 @@ async function onAccentSwitch() {
         input.onchange = e => {
             var value = e.target.value;
             root.style.setProperty("--accent", `var(--${value})`);
+            root.style.setProperty("--accent-gradient", `var(--${value}-gradient)`);
             localStorage.setItem('accent', `${value}`);
         }
     }

@@ -54,7 +54,7 @@
     }
 
     input[title="Submit"]:hover {
-        background: repeating-linear-gradient(90deg, #ff5533, #f3de2c, #ff5533);
+        background: var(--accent-gradient);
         animation: animate 2s linear infinite;
     }
 
