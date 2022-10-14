@@ -76,6 +76,7 @@
     --font-color: var(--white);
     --background-primary: var(--eerie-black);
     --background-secondary: var(--jet);
+    --background-ternary: var(--davy-gray);
     --buttons: var(--davy-gray);
     --color-scheme: dark;
 }
@@ -85,6 +86,7 @@
     --font-color: var(--white);
     --background-primary: var(--xiketic);
     --background-secondary: var(--raisin-black);
+    --background-ternary: var(--dark-purple);
     --buttons: var(--dark-purple);
     --color-scheme: dark;
 }
@@ -94,6 +96,7 @@
     --font-color: var(--black);
     --background-primary: var(--white);
     --background-secondary: var(--gainsboro);
+    --background-ternary: var(--lightgray);
     --buttons: var(--lightgray);
     --color-scheme: light;
 }
@@ -123,6 +126,7 @@ main {
     flex-direction: column;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
 }
 
 button {
