@@ -4,11 +4,14 @@
     include_once($path);
 ?>
 <?php 
-    function multiexplode ($delimiters,$string) {
+    $path = $_SERVER['DOCUMENT_ROOT'];
+    $path .= "/PHP/slug.php";
+    include_once($path);
 
-        $ready = str_replace($delimiters, $delimiters[0], $string);
-        $launch = explode($delimiters[0], $ready);
-        return  $launch;
+    function multiexplode ($delimiters,$string) {
+        $replace = str_replace($delimiters, $delimiters[0], $string);
+        $result = explode($delimiters[0], $replace);
+        return $result;
     }
 ?>
 <!DOCTYPE html>
@@ -43,13 +46,36 @@
         ?>
         <div id="Main">
             <article id="Aliment">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+                <div id="Current">
+                    <legend>Aliment courant</legend>
+                    <span>
+                        <?php
+                            $url = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}/{$_SERVER['REQUEST_URI']}";
+                            $href = explode('?', $url);
+                            if(isset($_GET['current'])) {
+                                    $current = $_GET['current'];
+                            }
+                            else {
+                                $current = 'Aliment';
+                            }
+                            print_r($current);
+                        ?>
+                    </span>
+                </div>
+                <?php 
+                    if(isset($Hierarchie[$current]['sous-categorie'])) {?>
+                        <span>Sous-categorie</span>
+                        <?php foreach($Hierarchie[$current]['sous-categorie'] as $i => $item) { ?>
+                            <a href="/index.php?current=<?php print_r($item);?>"><?php print_r($item); ?></a>
+                        <?php }
+                    }
+                    if(isset($Hierarchie[$current]['super-categorie'])) { ?>
+                        <span>Super-Categorie</span>
+                        <?php foreach($Hierarchie[$current]['super-categorie'] as $i => $item) { ?>
+                            <a href="/index.php?current=<?php print_r($item);?>"><?php print_r($item); ?></a>
+                        <?php }
+                    }
+                ?>
             </article>
             <article id="List">
                 <?php

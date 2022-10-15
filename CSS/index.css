@@ -27,6 +27,9 @@
     #Main > article {
         height: calc(100% - 1rem);
         display: flex;
+        max-height: calc(100vh - 60px - 1rem);
+        overflow-y: auto;
+        padding: 5px;
     }
 
     #Main > article::-webkit-scrollbar {
@@ -50,8 +53,8 @@
         border-radius: calc(1rem / 8);
     }
 
-    #Main > article > div {
-        padding: 5px;
+    #Main > article > div,
+    #Main > article > a {
         background-color: var(--background-ternary);
         border-radius: 0.25rem;
     }
@@ -61,24 +64,29 @@
         border-radius: 4px;
         flex-direction: column;
         gap: 5px;
-        padding: 5px;
         margin: 0 0.5rem 1rem 1rem;
     }
 
-    #Aliment > div {
+    #Aliment > div:first-of-type {
+        background-color: var(--background-secondary);
+        display: block;
+    }
+
+    #Aliment > div,
+    #Aliment > a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 100%;
-        height: 100px;
+        height: 50px;
     }
 
     #List {
         background-color: var(--background-secondary);
         border-radius: 4px;
-        padding: 5px;
         margin: 0 1rem 1rem 0.5rem;
-        max-height: calc(100vh - 60px - 1rem);
         flex-wrap: wrap;
-        gap: 5px;
-        overflow-y: scroll;
+        gap: 5px; 
     }
 
     #List > div {
