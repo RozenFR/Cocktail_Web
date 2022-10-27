@@ -51,7 +51,8 @@ include_once($path);
         for($i = 0; $i < count($Recettes); $i++) {
             $title = multiexplode(array(",", ":", "("), $Recettes[$i]['titre']);
             $ingredients = explode('|', $Recettes[$i]['ingredients']);
-            $search_words = explode(' ', htmlspecialchars($_GET["content"]));
+            $content = htmlspecialchars($_GET["content"]);
+            $search_words = explode(' ', $content);
             $status = false;
 
             for ($j = 0; $j < count($search_words); $j++) {
@@ -61,13 +62,15 @@ include_once($path);
                     $status = true;
             }
 
+            if (trim($content, " ") == "") $status = true;
+
             if ($status) { ?>
                 <div class="flex-item">
                     <legend>
                         <?php
                         print_r($title[0]);
                         ?></legend>
-                    <img src="/Photos/Black_velvet.jpg" alt="">
+                    <img src="/Photos/black-velvet.jpg" alt="">
                     <ul title="Ingredient_Field">
                         <?php for($j = 0; $j < count($ingredients); $j++) { ?>
                             <li><?php print_r($ingredients[$j]); ?></li>
