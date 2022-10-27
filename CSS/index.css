@@ -36,7 +36,6 @@
         width: calc(1rem / 3);
         -webkit-border-radius: calc(1rem / 3);
         border-radius: calc(1rem / 3);
-        transform: translateX(-1px);
     }
 
     #Main > article::-webkit-scrollbar-button {
@@ -53,9 +52,15 @@
         border-radius: calc(1rem / 8);
     }
 
-    #Main > article > div,
     #Main > article > a {
         background-color: var(--background-ternary);
+        border-radius: 0.25rem;
+    }
+
+    #List > div {
+        background-color: rgba(0, 0, 0, 0.5);
+        background-size: cover;
+        background-blend-mode: darken;
         border-radius: 0.25rem;
     }
 
