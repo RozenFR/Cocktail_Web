@@ -1,3 +1,21 @@
+<?php
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/data.php";
+include_once($path);
+?>
+
+<?php
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/PHP/slug.php";
+include_once($path);
+
+function multiexplode ($delimiters,$string) {
+    $replace = str_replace($delimiters, $delimiters[0], $string);
+    $result = explode($delimiters[0], $replace);
+    return $result;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -29,16 +47,40 @@ include_once($path);
     include_once($path)
     ?>
     <div class="flex-content">
-        <div class="flex-item">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consectetur ex mollitia odio quaerat quod rem repellat reprehenderit unde ut. Accusamus debitis doloribus fugit illo nemo nostrum, numquam quod unde.</p>
-        </div>
-        <div class="flex-item">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores autem culpa doloribus eius fugiat, hic in ipsam itaque laboriosam magnam, maiores nam natus pariatur, quas repudiandae sed soluta suscipit voluptatem?</p>
-        </div>
-        <div class="flex-item">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet delectus eius officia quidem, repudiandae tempore. Ea eos hic, id illo laudantium modi molestiae sapiente similique sit unde velit voluptatibus?</p>
-        </div>
+        <?php
+        for($i = 0; $i < count($Recettes); $i++) {
+            $title = multiexplode(array(",", ":", "("), $Recettes[$i]['titre']);
+            $ingredients = explode('|', $Recettes[$i]['ingredients']);
+            $search_words = explode(' ', htmlspecialchars($_GET["content"]));
+            $status = false;
+
+            for ($j = 0; $j <= count($search_words); $j++) {
+                if (strpos(strtolower($Recettes[$i]['titre']), strtolower($search_words[$j])) !== false)
+                    $status = true;
+                if (strpos(strtolower($Recettes[$i]['ingredients']), strtolower($search_words[$j])) !== false)
+                    $status = true;
+            }
+
+            if ($status) { ?>
+                <div class="flex-item">
+                    <legend>
+                        <?php
+                        print_r($title[0]);
+                        ?></legend>
+                    <img src="/Photos/Black_velvet.jpg" alt="">
+                    <ul title="Ingredient_Field">
+                        <?php for($j = 0; $j < count($ingredients); $j++) { ?>
+                            <li><?php print_r($ingredients[$j]); ?></li>
+                        <?php }
+                        ?>
+                    </ul>
+                    <!-- <p><?php print_r($i); ?></p> -->
+                </div>
+            <?php } ?>
+        <?php }
+        ?>
     </div>
+
 </main>
 </body>
 </html>

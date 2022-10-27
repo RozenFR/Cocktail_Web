@@ -1,15 +1,50 @@
 .flex-content {
+    overflow-y: auto;
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 100px 5% 60px 5%;
+    position: relative;
+    width: 80%;
+    height: calc(100vh - 100px);
+    top: 100px;
+    bottom: 100px;
     gap: 5px;
 }
 
 .flex-item {
-    flex: 0 0 30%;
+    flex: 0 0 20%;
     padding: 10px;
     background-color: var(--background-secondary);
+}
+
+.flex-item > image {
+    width: 50px;
+}
+
+.flex-item > ul {
+    overflow-y: auto;
+    list-style-type: none;
+}
+
+.flex-content::-webkit-scrollbar {
+    width: calc(1rem / 3);
+    -webkit-border-radius: calc(1rem / 3);
+    border-radius: calc(1rem / 3);
+    transform: translateX(-1px);
+}
+
+.flex-content::-webkit-scrollbar-button {
+    display: none;
+}
+
+.flex-content::-webkit-scrollbar-track-piece {
+    background-color: var(--buttons);
+}
+
+.flex-content::-webkit-scrollbar-thumb {
+    background-color: var(--accent);
+    -webkit-border-radius: calc(1rem / 8);
+    border-radius: calc(1rem / 8);
 }
 
