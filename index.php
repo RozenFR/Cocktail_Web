@@ -14,6 +14,15 @@
         return $result;
     }
 ?>
+<?php 
+    function debug_to_console($data) {
+        $output = $data;
+        if (is_array($output))
+            $output = implode(',', $output);
+
+        echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,13 +89,17 @@
             <article id="List">
                 <?php
                     for($i = 0; $i < count($Recettes); $i++) { ?>
-                        <div>
+                        <div <?php
+                        $title = multiexplode(array(",", ":", "(", ")"), $Recettes[$i]['titre']);
+                        $title2 = rtrim(slug($title[0]), "-");
+                        echo "style='background-image:url(".'"'."/Photos/".strtolower($title2).".jpg".'"'.");'";  ?>>
                             <legend>
                             <?php 
+                                
                                 $title = multiexplode(array(",", ":", "("), $Recettes[$i]['titre']);
                                 print_r($title[0]); 
                             ?></legend>
-                            <img src="/Photos/Black_velvet.jpg" alt="">
+                            <!-- <img src="/Photos/Black_velvet.jpg" alt=""> -->
                             <ul title="Ingredient_Field">
                             <?php $ingredients = explode('|', $Recettes[$i]['ingredients']);
                                 for($j = 0; $j < count($ingredients); $j++) { ?>
