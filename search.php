@@ -54,7 +54,7 @@ include_once($path);
             $search_words = explode(' ', htmlspecialchars($_GET["content"]));
             $status = false;
 
-            for ($j = 0; $j <= count($search_words); $j++) {
+            for ($j = 0; $j < count($search_words); $j++) {
                 if (strpos(strtolower($Recettes[$i]['titre']), strtolower($search_words[$j])) !== false)
                     $status = true;
                 if (strpos(strtolower($Recettes[$i]['ingredients']), strtolower($search_words[$j])) !== false)
