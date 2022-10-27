@@ -95,7 +95,6 @@
                         echo "style='background-image:url(".'"'."/Photos/".strtolower($title2).".jpg".'"'.");'";  ?>>
                             <legend>
                             <?php 
-                                
                                 $title = multiexplode(array(",", ":", "("), $Recettes[$i]['titre']);
                                 print_r($title[0]); 
                             ?></legend>

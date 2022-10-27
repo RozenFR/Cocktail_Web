@@ -64,6 +64,11 @@
         border-radius: 0.25rem;
     }
 
+    #List > div > ul > li,
+    #List > div > legend {
+        color: var(--white);
+    }
+
     #Aliment {
         background-color: var(--background-secondary);
         border-radius: 4px;
