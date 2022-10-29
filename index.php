@@ -14,15 +14,6 @@
         return $result;
     }
 ?>
-<?php 
-    function debug_to_console($data) {
-        $output = $data;
-        if (is_array($output))
-            $output = implode(',', $output);
-
-        echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -93,20 +84,22 @@
                         $title = multiexplode(array(",", ":", "(", ")"), $Recettes[$i]['titre']);
                         $title2 = rtrim(slug($title[0]), "-");
                         echo "style='background-image:url(".'"'."/Photos/".strtolower($title2).".jpg".'"'.");'";  ?>>
-                            <legend>
-                            <?php 
-                                $title = multiexplode(array(",", ":", "("), $Recettes[$i]['titre']);
-                                print_r($title[0]); 
-                            ?></legend>
-                            <!-- <img src="/Photos/Black_velvet.jpg" alt=""> -->
-                            <ul title="Ingredient_Field">
-                            <?php $ingredients = explode('|', $Recettes[$i]['ingredients']);
-                                for($j = 0; $j < count($ingredients); $j++) { ?>
-                                    <li><?php print_r($ingredients[$j]); ?></li>
-                                <?php }
-                            ?>
-                            </ul>
-                            <!-- <p><?php print_r($i); ?></p> -->
+                            <div class="List_content">
+                                <legend>
+                                <?php 
+                                    $title = multiexplode(array(",", ":", "("), $Recettes[$i]['titre']);
+                                    print_r($title[0]); 
+                                ?></legend>
+                                <!-- <img src="/Photos/Black_velvet.jpg" alt=""> -->
+                                <ul title="Ingredient_Field">
+                                <?php $ingredients = explode('|', $Recettes[$i]['ingredients']);
+                                    for($j = 0; $j < count($ingredients); $j++) { ?>
+                                        <li><?php print_r($ingredients[$j]); ?></li>
+                                    <?php }
+                                ?>
+                                </ul>
+                                <!-- <p><?php print_r($i); ?></p> -->
+                            </div>
                         </div>
                     <?php } 
                 ?>

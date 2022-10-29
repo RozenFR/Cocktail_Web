@@ -58,10 +58,20 @@
     }
 
     #List > div {
-        background-color: rgba(0, 0, 0, 0.5);
+        
         background-size: cover;
         background-blend-mode: darken;
         border-radius: 0.25rem;
+    }
+
+    .List_content {
+        background: linear-gradient( rgba(10, 10, 10, 0.6) 30%, transparent);
+        width: 100%;
+        height: 100%;
+    }
+
+    .List_content:hover {
+        background: linear-gradient(to left top, var(--accent), transparent);
     }
 
     #List > div > ul > li,
@@ -106,23 +116,20 @@
         justify-content: center;
     }
 
-    #List > div > legend {
+    .List_content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .List_content > legend {
         text-align: center;
+        padding: 0.25rem;
     }
 
-    #List img {
-        width: calc(100%/3);
-        aspect-ratio: 1/1;
-        margin-top: 5px;
-        margin-left: calc((100% - 100%/3) / 2);
-        margin-bottom: 0;
-        margin-right: calc((100% - 100%/3)/2);
-    }
-
-    #List ul {
-        overflow-y: auto;
-        height: calc(100% - 20px - 100%/3 - 5px);
-        max-height: calc(100% - 20px - 100%/3 - 5px);
+    .List_content ul {
+        padding: 0.25rem;
         list-style-type: none;
+        width: 100%;
+        margin: auto 0 0 0;
     }
 }
