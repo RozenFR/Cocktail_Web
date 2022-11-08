@@ -48,21 +48,51 @@ include_once($path);
     ?>
     <div class="flex-content">
         <?php
+        /* Setup URL params in PHP */
+        /* Setup "something in it" */
+        $raw_content = $_GET['content'];
+        $a_content = explode('"', $raw_content);
+        $ingredient = $a_content[1];
+
+        /* Setup Filter '+' et '-' */
+        $posfilter = [];
+        $negfilter = [];
+        if (count($a_content) > 1) {
+            $raw_filter_content = substr($a_content[2], 1);
+            $filter_content = explode(" ", $raw_filter_content);
+            for ($j = 0; $j < count($filter_content); $j++) {
+                if ($filter_content[$j][0] == '+')
+                    $posfilter[] = $filter_content[$j];
+                if ($filter_content[$j][0] == '-')
+                    $negfilter[] = $filter_content[$j];
+            }
+        }
+
         for($i = 0; $i < count($Recettes); $i++) {
             $title = multiexplode(array(",", ":", "("), $Recettes[$i]['titre']);
             $ingredients = explode('|', $Recettes[$i]['ingredients']);
-            $content = htmlspecialchars($_GET["content"]);
-            $search_words = explode(' ', $content);
-            $status = false;
 
-            for ($j = 0; $j < count($search_words); $j++) {
-                if (strpos(strtolower($Recettes[$i]['titre']), strtolower($search_words[$j])) !== false)
-                    $status = true;
-                if (strpos(strtolower($Recettes[$i]['ingredients']), strtolower($search_words[$j])) !== false)
-                    $status = true;
+            $status = true;
+
+            if (strpos(strtolower($Recettes[$i]['ingredients']), strtolower($ingredient)) === false)
+                $status = false;
+
+            if ($status && count($posfilter) > 0) {
+                for ($j = 0; $j < count($posfilter); $j++) {
+                    $subf = substr($posfilter[$j], 1);
+                    if (strpos(strtolower($Recettes[$i]['ingredients']), strtolower($subf)) === false)
+                        $status = false;
+                }
             }
 
-            if (trim($content, " ") == "") $status = true;
+            if ($status && count($negfilter) > 0) {
+                for ($j = 0; $j < count($negfilter); $j++) {
+                    $subf = substr($negfilter[$j], 1);
+                    if (strpos(strtolower($Recettes[$i]['ingredients']), strtolower($subf)) !== false)
+                        $status = false;
+                }
+            }
+
 
             if ($status) { ?>
                 <div class="flex-item">
