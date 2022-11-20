@@ -39,9 +39,9 @@
         include_once($path)
       ?>
       <?php
-      $fav_array = range(0, count($Recettes));
-      shuffle($fav_array );
-      $fav_array = array_slice($fav_array ,0,5);
+      //$fav_array = range(0, count($Recettes));
+      //shuffle($fav_array );
+      //$fav_array = array_slice($fav_array ,0,5);
 ?>
       <?php for ($i=0; $i < count($Recettes); $i++) {
         if (in_array($i,$fav_array)){ ?>
