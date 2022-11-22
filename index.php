@@ -14,6 +14,20 @@
         return $result;
     }
 ?>
+<?php
+    $leafs = array();
+    
+    function getLeaf($array, $current, &$leafs) {
+        if(isset($array[$current]['sous-categorie'])) {
+            foreach($array[$current]['sous-categorie'] as $i => $item) {
+                getLeaf($array, $item, $leafs);
+            }
+        }
+        else if(!in_array($current, $leafs)) {
+            $leafs[] = $current;
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,15 +64,14 @@
                     <legend>Aliment courant</legend>
                     <span>
                         <?php
-                            $url = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}/{$_SERVER['REQUEST_URI']}";
-                            $href = explode('?', $url);
                             if(isset($_GET['current'])) {
-                                    $current = $_GET['current'];
+                                $current = $_GET['current'];
                             }
                             else {
                                 $current = 'Aliment';
                             }
                             print_r($current);
+                            getLeaf($Hierarchie, $current, $leafs);
                         ?>
                     </span>
                 </div>
@@ -79,7 +92,18 @@
             </article>
             <article id="List">
                 <?php
-                    for($i = 0; $i < count($Recettes); $i++) { ?>
+                    for($i = 0; $i < count($Recettes); $i++) {
+                        $ingredients = $Recettes[$i]['index'];
+                        for($k = 0; $k < count($ingredients); $k++) {
+                            if(in_array($ingredients[$k], $leafs)) {
+                                $status = true;
+                                break;
+                            }
+                            else {
+                                $status = false;
+                            }
+                        }
+                        if($status) { ?>
                         <div <?php
                         $title = multiexplode(array(",", ":", "(", ")"), $Recettes[$i]['titre']);
                         $title2 = rtrim(slug($title[0]), "-");
@@ -92,7 +116,8 @@
                                 ?></legend>
                                 <!-- <img src="/Photos/Black_velvet.jpg" alt=""> -->
                                 <ul title="Ingredient_Field">
-                                <?php $ingredients = explode('|', $Recettes[$i]['ingredients']);
+                                <?php 
+                                    // print_r($ingredients);
                                     for($j = 0; $j < count($ingredients); $j++) { ?>
                                         <li><?php print_r($ingredients[$j]); ?></li>
                                     <?php }
@@ -101,7 +126,8 @@
                                 <!-- <p><?php print_r($i); ?></p> -->
                             </div>
                         </div>
-                    <?php } 
+                        <?php }
+                    }
                 ?>
             </article>
         </div>
