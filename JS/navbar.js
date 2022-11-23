@@ -36,6 +36,9 @@ function active() {
     var href = urlArray[urlArray.length - 1];
 
     switch (href) {
+        case '':
+            document.getElementsByName('Link')[0].id = 'active';
+            break;
         case 'index.php':
             console.log(document.getElementsByName('Link'));
             document.getElementsByName('Link')[0].id = 'active';

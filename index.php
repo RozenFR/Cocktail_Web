@@ -105,21 +105,26 @@
                         echo 'href="/product.php?index='.$i.'"'; 
                         ?>>
                             <div class="List_content">
-                                <legend>
-                                <?php 
-                                    $title = multiexplode(array(",", ":", "("), $Recettes[$i]['titre']);
-                                    print_r($title[0]); 
-                                ?></legend>
-                                <!-- <img src="/Photos/Black_velvet.jpg" alt=""> -->
-                                <ul title="Ingredient_Field">
-                                <?php 
-                                    // print_r($ingredients);
-                                    for($j = 0; $j < count($ingredients); $j++) { ?>
-                                        <li><?php print_r($ingredients[$j]); ?></li>
-                                    <?php }
-                                ?>
-                                </ul>
-                                <!-- <p><?php print_r($i); ?></p> -->
+                                <div class="Top">
+                                    <span class="index"><?php print_r($i); ?></span>
+                                    <legend>
+                                    <?php 
+                                        $title = multiexplode(array(",", ":", "("), $Recettes[$i]['titre']);
+                                        print_r($title[0]); 
+                                    ?></legend>
+                                </div>
+                                <div class="Bottom">
+                                    <ul title="Ingredient_Field">
+                                    <?php 
+                                        for($j = 0; $j < count($ingredients); $j++) { ?>
+                                            <li><?php print_r($ingredients[$j]); ?></li>
+                                        <?php }
+                                    ?>
+                                    </ul>
+                                    <svg class="like" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                    </svg>
+                                </div>
                             </div>
                         </a>
                         <?php }

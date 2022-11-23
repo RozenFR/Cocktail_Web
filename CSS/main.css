@@ -79,6 +79,7 @@
     --background-ternary: var(--davy-gray);
     --buttons: var(--davy-gray);
     --color-scheme: dark;
+    --obfuscate: 10, 10, 10, 0.4;
 }
 
 /* Slate Theme */
@@ -89,6 +90,7 @@
     --background-ternary: var(--dark-purple);
     --buttons: var(--dark-purple);
     --color-scheme: dark;
+    --obfuscate: 10, 10, 10, 0.4;
 }
 
 /* Light Theme */
@@ -99,6 +101,7 @@
     --background-ternary: var(--lightgray);
     --buttons: var(--lightgray);
     --color-scheme: light;
+    --obfuscate: 255, 255, 255, 0.3;
 }
 
 * {

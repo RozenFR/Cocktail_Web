@@ -52,12 +52,11 @@
         height: calc((100vh - 60px - 1rem - 3 * 5px) / 2);
         justify-content: center;
         background-size: cover;
-        background-blend-mode: darken;
         border-radius: 0.25rem;
     }
 
     .List_content {
-        background: linear-gradient( rgba(10, 10, 10, 0.6) 30%, transparent);
+        background-color: rgba(var(--obfuscate));
         width: 100%;
         height: 100%;
     }
@@ -106,15 +105,38 @@
         flex-direction: column;
     }
 
-    .List_content > legend {
+    .Top > legend {
         text-align: center;
+        padding: 0.25rem;
+        width: calc(100% - 30px);
+    }
+
+    .Top {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .Bottom {
+        display: flex;
+        flex-direction: row;
+        margin: auto 0 0 0;
         padding: 0.25rem;
     }
 
-    .List_content ul {
-        padding: 0.25rem;
+    .Bottom ul {
         list-style-type: none;
-        width: 100%;
-        margin: auto 0 0 0;
+        width: calc(100% - 50px);
+        display: inline;
+    }
+
+    .like {
+        margin-top: auto;
+    }
+
+    .index {
+        position: relative;
+        padding: 5px;
+        height: 30px;
+        width: 30px;
     }
 }
