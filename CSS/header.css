@@ -50,6 +50,10 @@
         margin-right: 8px;
     }
 
+    #active {
+        background-color: var(--accent);
+    }
+
     #Recette {
         height: 100%;
         display: inline-flex;

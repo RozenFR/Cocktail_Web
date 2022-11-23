@@ -2,6 +2,7 @@
     <style>
         @import url('/CSS/header.css');
     </style>
+    <script src="/JS/navbar.js"></script>
 </head>
 <header id="Topbar">
     <a href="/index.php" class="Links" name="Link">

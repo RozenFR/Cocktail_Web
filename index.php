@@ -44,12 +44,6 @@
     <script defer src="/JS/theme.js"></script>
 </head>
 <body onload="active();onThemeSwitch();onAccentSwitch();">
-    <!-- Aside -->
-    <?php 
-        $path = $_SERVER['DOCUMENT_ROOT'];
-        $path .= "/HTML/navbar.html";
-        include_once($path);
-    ?>
     <!-- Main Content -->
     <main>
         <!-- Header -->
