@@ -26,32 +26,34 @@
     <link rel="icon" href="./Photos/icon.ico">
     <style>
         @import url('/CSS/main.css');
+        @import url('/CSS/product.css');
         @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@500&display=swap');
     </style>
 </head>
 <body onload="active();onThemeSwitch();onAccentSwitch();">
-  <?php
-      $path = $_SERVER['DOCUMENT_ROOT'];
-      $path .= "/HTML/navbar.html";
-      include_once($path);
-  ?>
-  <main>
     <?php
         $path = $_SERVER['DOCUMENT_ROOT'];
-        $path .= "/PHP/header.php";
-        include_once($path)
+        $path .= "/HTML/navbar.html";
+        include_once($path);
     ?>
-    <h1><?php echo $title2 ?> </h1>
-      <h2> Ingrédients </h2>
-      <ul title="Ingredient_Field">
-      <?php $ingredients = explode('|', $Recettes[$_GET['index']]['ingredients']);
-          for($j = 0; $j < count($ingredients); $j++) { ?>
-              <li><?php print_r($ingredients[$j]); ?></li>
-          <?php }
-      ?>
-      <h2> Préparation </h2>
-      <?php print_r($Recettes[$_GET['index']]['preparation']) ?>
-    <img <?php echo "src = ".'"'."/Photos/".strtolower($title2).".jpg".'"'.");'";  ?> />
-  </div>
-  </body>
+    <main>
+        <?php
+            $path = $_SERVER['DOCUMENT_ROOT'];
+            $path .= "/PHP/header.php";
+            include_once($path);
+        ?>
+        <div id="Main">
+        <h1><?php echo $title2 ?></h1>
+        <h2> Ingrédients </h2>
+        <ul title="Ingredient_Field">
+        <?php $ingredients = explode('|', $Recettes[$_GET['index']]['ingredients']);
+            for($j = 0; $j < count($ingredients); $j++) { ?>
+                <li><?php print_r($ingredients[$j]); ?></li>
+            <?php }
+        ?>
+        <h2> Préparation </h2>
+        <?php print_r($Recettes[$_GET['index']]['preparation']) ?>
+        <img <?php echo "src = ".'"'."/Photos/".strtolower($title2).".jpg".'"'.");'";  ?> />
+    </div>
+</body>
 </html>

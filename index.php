@@ -104,10 +104,12 @@
                             }
                         }
                         if($status) { ?>
-                        <div <?php
+                        <a <?php
                         $title = multiexplode(array(",", ":", "(", ")"), $Recettes[$i]['titre']);
                         $title2 = rtrim(slug($title[0]), "-");
-                        echo "style='background-image:url(".'"'."/Photos/".strtolower($title2).".jpg".'"'.");'";  ?>>
+                        echo "style='background-image:url(".'"'."/Photos/".strtolower($title2).".jpg".'"'.");'"; 
+                        echo 'href="/product.php?index='.$i.'"'; 
+                        ?>>
                             <div class="List_content">
                                 <legend>
                                 <?php 
@@ -125,7 +127,7 @@
                                 </ul>
                                 <!-- <p><?php print_r($i); ?></p> -->
                             </div>
-                        </div>
+                        </a>
                         <?php }
                     }
                 ?>

@@ -71,6 +71,8 @@
         overflow-y: hidden;
         overflow-x: scroll;
         height: 50px;
+        scrollbar-color: var(--accent) var(--background-secondary);
+        scrollbar-width: thin;
     }
 
     div[id="Accent_Field"]::-webkit-scrollbar {

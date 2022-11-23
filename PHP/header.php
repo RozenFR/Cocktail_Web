@@ -4,17 +4,11 @@
     </style>
 </head>
 <header id="Topbar">
-    <button id="Button" onclick="Open_Nav()">
-        <svg viewBox="0 0 24 24">
-            <path d="M3 12H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" />
-            <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" />
-            <path d="M3 18H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-    </button>
-    <a onclick="Open_Nav()" id="Navigation">
-        <legend>Navigation</legend>
+    <a href="/index.php" class="Links" name="Link">
+        Navigation
+    </a>
+    <a href="/favourites.php" class="Links" name="Link">
+        Favoris
     </a>
     <form action="/search.php" method="GET" id="Search">
         <input placeholder="Rechercher un cocktail, ingrédient, ..." title="Search" name="content"/>

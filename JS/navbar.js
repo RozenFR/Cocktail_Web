@@ -36,18 +36,12 @@ function active() {
     var href = urlArray[urlArray.length - 1];
 
     switch (href) {
-        default:
-            document.getElementsByName('Link')[0].id = 'active';
-            break;
         case 'index.php':
             console.log(document.getElementsByName('Link'));
             document.getElementsByName('Link')[0].id = 'active';
             break;
-        case 'Navigation.php':
+        case 'favourites.php':
             document.getElementsByName('Link')[1].id = 'active';
-            break;
-        case 'Recette.php':
-            document.getElementsByName('Link')[2].id = 'active';
             break;
     }
 }

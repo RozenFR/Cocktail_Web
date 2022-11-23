@@ -18,13 +18,6 @@
         margin: 7.5px;
     }
 
-    header>a>legend {
-        font-size: 18px;
-        height: 25px;
-        margin-top: 18px;
-        margin-bottom: 7px;
-    }
-
     header[id="Topbar"]>button {
         height: 40px;
         width: 40px;
@@ -46,12 +39,15 @@
         background-color: var(--buttons) !important;
     }
 
-    #Navigation {
+    .Links {
+        width: 140px;
         height: 100%;
-        display: inline-flex;
+        display: flex;
         align-items: center;
-        vertical-align: middle;
-        cursor: pointer;
+        justify-content: center;
+        background-color: var(--background-secondary);
+        border-radius: 4px;
+        margin-right: 8px;
     }
 
     #Recette {
