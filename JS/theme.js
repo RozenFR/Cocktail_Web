@@ -1,7 +1,7 @@
 var theme = localStorage.getItem('theme') || (temp = 'slate', localStorage.setItem('theme', temp), temp);
 var accent = localStorage.getItem('accent') || (temp = 'orange-soda', localStorage.setItem('accent', temp), temp);
 var accent_gradient = `${accent}` + "-gradient";
-const bodyClass = document.body.classList;
+var bodyClass = document.body.classList;
 
 async function onAccentSwitch() {
     const inputs = document.querySelectorAll("input[name='theme']")

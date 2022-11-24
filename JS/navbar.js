@@ -1,22 +1,3 @@
-function Open_Nav() {
-    document.getElementById("Nav").style.marginLeft = "0px";
-}
-
-function Close_Nav() {
-    document.getElementById("Nav").style.marginLeft = "-320px";
-}
-
-function dropdown() {
-    document.getElementById("dropdown").classList.toggle("show");
-    var drop = document.getElementById('drop');
-    if (drop.style.transform == "") {
-        drop.style.transform = "rotate(180deg)";
-    }
-    else {
-        drop.style.transform = "";
-    }
-}
-
 function openProfile() {
     document.getElementById("Profile_Box").style.display = "block";
     document.getElementById("Open_Profile").style.display = "none";
@@ -32,10 +13,11 @@ function closeProfile() {
 
 function active() {
     var url = document.location.href;
-    urlArray = url.split('/');
-    var href = urlArray[urlArray.length - 1];
+    var urlArray = url.split('/');
+    var uri = urlArray[urlArray.length - 1];
+    uri = uri.split('?')[0];
 
-    switch (href) {
+    switch (uri) {
         case '':
             document.getElementsByName('Link')[0].id = 'active';
             break;

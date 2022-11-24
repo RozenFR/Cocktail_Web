@@ -42,7 +42,6 @@
     </style>
     <script defer src="/JS/theme.js"></script>
     <script defer src="/JS/like.js"></script>
-    <script defer src="/JS/index.js"></script>
 </head>
 <body onload="active();onThemeSwitch();onAccentSwitch();">
     <!-- Main Content -->
