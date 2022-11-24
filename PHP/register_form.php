@@ -1,3 +1,9 @@
+<?php
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/PHP/register_post.php";
+include_once($path);
+?>
+
 <head>
     <style>
         @import url('/CSS/register.css');
@@ -11,142 +17,56 @@
             </svg>
             <h2>Créer un compte</h2>
         </legend>
+
+
         <span class="inputBox">
-            <input name="username" type="text" required="required"
-            <?php
-                if(isset($_POST['username'])) {
-                    $username = trim($_POST['username']);
-                    if(!ctype_alnum($username)) {
-                        echo "class='invalid'";
-                    }
-                    echo 'value="'.$username.'"'." class='valid'"; 
-                }
-                else if(isset($_POST['submit'])) {
-                    echo "class='invalid'";
-                }
-            ?>
-            />
+            <input name="username" class="<?= $validation_username ?>" type="text" required="required"/>
             <span title="required_span">
                 <legend>Identifiant</legend>
                 <legend class="required">Obligatoire</legend>
             </span>
         </span>
+
+<!--    Email    -->
         <span class="inputBox unrequired">
-            <input name="mail" type="text" placeholder=" " pattern="[a-z0-9._%+-]+@[a-z0-9._-]+\.[a-z]{2,4}$"
-            <?php
-                if(isset($_POST['submit'])) {
-                    if(isset($_POST['mail'])) {
-                        $mail = trim($_POST['mail']);
-                        if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-                            echo "class='invalid'";
-                        }
-                        echo 'value="'.$mail.'"'." class='valid'"; 
-                    }
-                }
-            ?>
-            />
+            <input name="mail" class="<?= $validation_mail ?>" type="text" placeholder=" " pattern="[a-z0-9._%+-]+@[a-z0-9._-]+\.[a-z]{2,4}$"/>
             <span>
                 <legend>Email</legend>
             </span>
         </span>
+
+<!--    Password    -->
         <span class="inputBox">
-            <input name="password" type="text" required="required"
-            <?php
-                if(isset($_POST['password'])) {
-                    $password = trim($_POST['password']);
-                    if(!ctype_alnum($password)) {
-                        echo "class='invalid'";
-                    }
-                    echo 'value="'.$password.'"'." class='valid'"; 
-                }
-                else if(isset($_POST['submit'])) {
-                    echo "class='invalid'";
-                }
-            ?>
-            />
+            <input name="password" class="<?= $validation_password ?>" type="text" required="required"/>
             <span title="required_span">
                 <legend>Mot de passe</legend>
                 <legend class="required">Obligatoire</legend>
             </span>
         </span>
+
+<!--    Name    -->
         <span class="inputBox unrequired">
-            <input name="name" type="text" placeholder=" "
-            <?php
-                if(isset($_POST['name'])) {
-                    $name = trim($_POST['name']);
-                    if(!ctype_alpha($name)) {
-                        echo "class='invalid'";
-                    }
-                    echo 'value="'.$name.'"'." class='valid'"; 
-                }
-                else if(isset($_POST['submit'])) {
-                    echo "class='invalid'";
-                }
-            ?>
-            />
+            <input name="name" class="<?= $validation_name ?>" type="text" placeholder=" "/>
             <span>
                 <legend>Nom</legend>
             </span>
         </span>
+
+<!--    First Name    -->
         <span class="inputBox unrequired">
-            <input name="first_name" type="text" placeholder=" "
-            <?php
-                if(isset($_POST['first_name'])) {
-                    $first_name = trim($_POST['first_name']);
-                    if(!ctype_alpha($first_name)) {
-                        echo "class='invalid'";
-                    }
-                    echo 'value="'.$first_name.'"'." class='valid'"; 
-                }
-                else if(isset($_POST['submit'])) {
-                    echo "class='invalid'";
-                }
-            ?>
-            />
+            <input name="first_name" class="<?= $validation_first_name ?>" type="text" placeholder=" "/>
             <span>
                 <legend>Prénom</legend>
             </span>
         </span>
-        <input name="date" type="date"
-        <?php 
-            if(isset($_POST['submit'])) {
-                if(isset($_POST['date'])) {
-                    $date = $_POST['date'];
-                    echo 'value="'.$_POST['date'].'"';
-                    if($date != "") {
-                        list($year,$month,$day)=explode('-',$date);
-                        if(checkdate($month,$day,$year)) echo ' class="valid"';
-                        else echo ' class="invalid"';
-                    }
-                }
-            }
-        ?>
-        />
-        <span title="Gender_Field"
-        <?php
-            if(isset($_POST['submit'])) {
-                if(isset($_POST['sex'])) {
-                    $sex = $_POST['sex'];
-                    if(($sex == 'h') || ($sex == 'f') || ($sex == 'o')) {
-                      echo "class='valid'";
-                    }
-                }
-            }
-        ?>
-        >
+
+<!--    Birth Date    -->
+        <input name="date" class="<?= $validation_date ?>" type="date"/>
+
+<!--    Gender    -->
+        <span title="Gender_Field" class="<?= $validation_gender ?>">
             <div>
-                <input value="h" type="radio" name="sex"
-                <?php
-                    if(isset($_POST['submit'])) {
-                        if(isset($_POST['sex'])) {
-                            $sex = $_POST['sex'];
-                            if($sex == 'h') {
-                              echo "checked='checked'";
-                            }
-                        }
-                    }
-                ?>
-                />
+                <input value="h" type="radio" name="gender" checked="<?= $checked_m ?>"/>
                 <svg class="Radio_Checked" viewBox="0 0 24 24" fill="none">
                     <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="m9 11 3 3L22 4" stroke="#FF6740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -157,18 +77,7 @@
                 <label>Homme</label>
             </div>
             <div>
-                <input value="f" type="radio" name="sex"
-                <?php
-                    if(isset($_POST['submit'])) {
-                        if(isset($_POST['sex'])) {
-                            $sex = $_POST['sex'];
-                            if($sex == 'f') {
-                              echo "checked='checked'";
-                            }
-                        }
-                    }
-                ?>
-                />
+                <input value="f" type="radio" name="gender" checked="<?= $checked_f ?>"/>
                 <svg class="Radio_Checked" viewBox="0 0 24 24" fill="none">
                     <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="m9 11 3 3L22 4" stroke="#FF6740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
