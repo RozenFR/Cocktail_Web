@@ -1,7 +1,5 @@
 <?php
 
-ob_start();
-
 /**
  * User Register :
  * - username*
@@ -122,14 +120,17 @@ if (isset($_POST['submit'])) {
         ];
 
         $fp = file_get_contents('users.json');
-        $data = json_decode($fp);
+        $data = json_decode($fp, true);
         if (!isset($data[$_POST['username']])) {
             $data[$_POST['username']] = $user;
-            $data_encoded = json_encode($data);
-            file_put_contents('users.json', $data_encoded);
+            file_put_contents('users.json', json_encode($data));
         }
 
-        header("refresh:3;login.php");
+        $host = $_SERVER['HTTP_HOST'];
+        $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+        $extra = 'login.php';
+        echo "<script type='text/javascript'>window.top.location='http://". $host . $uri . "/" . $extra ."';</script>";
+        exit;
     }
 
 }
