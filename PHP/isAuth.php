@@ -5,7 +5,7 @@
  * @return void
  * Redirect user if not connected
  */
-function isAuth($url): void {
+function isAuthenticated($url): void {
     if (isset($_SESSION['username'])) {
         $host = $_SERVER['HTTP_HOST'];
         $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');

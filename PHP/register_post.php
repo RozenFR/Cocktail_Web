@@ -131,6 +131,7 @@ if (isset($_POST['submit'])) {
         $extra = 'login.php';
         echo "<script type='text/javascript'>window.top.location='http://". $host . $uri . "/" . $extra ."';</script>";
         exit;
+
     }
 
 }

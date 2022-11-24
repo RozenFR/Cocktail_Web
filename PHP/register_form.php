@@ -1,7 +1,7 @@
 <?php
 $path = $_SERVER['DOCUMENT_ROOT'];
 $path .= "/PHP/isAuth.php";
-include($path);
+include_once($path);
 ?>
 
 <?php
