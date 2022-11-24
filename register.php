@@ -11,6 +11,11 @@
     </style>
 </head>
 <body onload="active();onThemeSwitch();onAccentSwitch();">
+    <?php
+        $path = $_SERVER['DOCUMENT_ROOT'];
+        $path .= "/PHP/isAuth.php";
+        include_once($path);
+    ?>
     <?php 
         $path = $_SERVER['DOCUMENT_ROOT'];
         $path .= "/HTML/navbar.html";

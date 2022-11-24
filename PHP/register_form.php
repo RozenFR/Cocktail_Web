@@ -1,7 +1,13 @@
 <?php
 $path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/PHP/isAuth.php";
+include($path);
+?>
+
+<?php
+$path = $_SERVER['DOCUMENT_ROOT'];
 $path .= "/PHP/register_post.php";
-include_once($path);
+include($path);
 ?>
 
 <head>
@@ -10,7 +16,7 @@ include_once($path);
     </style>
 </head>
 <body>
-    <form title="Register" method="post" action="#">
+    <form title="Register" method="post" action="register.php">
         <legend title="Create">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path data-v-20f285ec="" d="M19 12H5m7 7-7-7 7-7"/>
@@ -95,7 +101,7 @@ include_once($path);
         if(isset($_POST['submit'])) {
             $path = $_SERVER['DOCUMENT_ROOT'];
             $path .= "/PHP/error.php";
-            include_once($path);
+            include($path);
         }
     ?>
 </body>

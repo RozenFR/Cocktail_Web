@@ -1,9 +1,6 @@
 <?php
 
-if (isset($_SESSION['username'])) {
-    header("Location : index.php");
-}
-
+ob_start();
 
 /**
  * User Register :
@@ -111,19 +108,7 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    echo "<h1>" . $valid_post . "</h1>";
-
     if ($valid_post) {
-
-        session_start();
-
-        $_SESSION['username'] = trim($_POST['username']);
-        $_SESSION['mail'] = trim($_POST['mail']);
-        $_SESSION['password'] = sha1($_POST['password']);
-        $_SESSION['name'] = $_POST['name'];
-        $_SESSION['first_name'] = $_POST['first_name'];
-        $_SESSION['date'] = $_POST['date'];
-        $_SESSION['gender'] = $_POST['gender'];
 
         $user = [
             "username" => $_POST['username'],
@@ -143,6 +128,8 @@ if (isset($_POST['submit'])) {
             $data_encoded = json_encode($data);
             file_put_contents('users.json', $data_encoded);
         }
+
+        header("refresh:3;login.php");
     }
 
 }
