@@ -30,7 +30,8 @@
 
     --xiketic: hsl(262, 20%, 10%);
     --raisin-black: hsl(260, 20%, 15%);
-    --dark-purple: #30293d;
+    --dark-purple: hsl(260, 20%, 20%);
+    --english-violet: hsl(260, 20%, 25%);
 
     /* Accents */
     --red: hsl(0, 70%, 50%);
@@ -77,7 +78,7 @@
     --background-primary: var(--eerie-black);
     --background-secondary: var(--jet);
     --background-ternary: var(--davy-gray);
-    --buttons: var(--davy-gray);
+    --buttons: var(--gray);
     --color-scheme: dark;
     --obfuscate: 10, 10, 10, 0.4;
 }
@@ -88,7 +89,7 @@
     --background-primary: var(--xiketic);
     --background-secondary: var(--raisin-black);
     --background-ternary: var(--dark-purple);
-    --buttons: var(--dark-purple);
+    --buttons: var(--english-violet);
     --color-scheme: dark;
     --obfuscate: 10, 10, 10, 0.4;
 }
@@ -99,7 +100,7 @@
     --background-primary: var(--white);
     --background-secondary: var(--gainsboro);
     --background-ternary: var(--lightgray);
-    --buttons: var(--lightgray);
+    --buttons: var(--silver);
     --color-scheme: light;
     --obfuscate: 255, 255, 255, 0.3;
 }

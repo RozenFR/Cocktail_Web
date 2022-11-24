@@ -2,13 +2,14 @@
     div[title="Profile_Box"] {
         display: none;
         padding: 24px;
-        width: calc(290px + 2 * 24px);
-        height: calc(100px + 2 * 24px);
+        width: calc(140px + 2 * 24px);
+        height: calc(85px + 2 * 24px);
         border-radius: 4px;
-        background-color: var(--background-secondary);
+        background-color: var(--background-ternary);
         position: absolute;
-        right: 20px;
-        top: 70px;
+        right: 1rem;
+        top: 60px;
+        box-shadow: 3px 3px 5px 1px black, -3px -3px 5px 1px black;
     }
 
     div[title="Profile_Box"] svg {
@@ -17,9 +18,9 @@
 
     div[title="Profile_Box"]>span {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 5px;
     }
-
 
     span[title="Settings/Theme"]>div {
         width: 140px;
@@ -27,6 +28,7 @@
         flex-wrap: nowrap;
         border-radius: 4px;
         cursor: pointer;
+        background-color: var(--buttons);
     }
 
     span[title="Settings/Theme"]>div:last-of-type {
@@ -42,34 +44,18 @@
     }
 
     span[title="Login/Register"] {
-        margin-top: calc(100px - 40px - 50px);
-    }
-
-    div[title="Settings"] {
-        margin-right: 5px;
-    }
-
-    div[title="Theme"] {
-        margin-left: 5px;
+        display: flex;
+        flex-direction: row;
     }
 
     span[title="Login/Register"]>a {
         width: 140px;
-        height: 50px;
+        height: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 4px;
         cursor: pointer;
-    }
-
-    a[title="Login"] {
-        background-color: var(--accent);
-        margin-right: 5px;
-    }
-
-    a[title="Register"] {
-        background-color: var(--buttons);
-        margin-left: 5px;
+        margin-right: 0.5rem;
     }
 }

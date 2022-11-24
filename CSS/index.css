@@ -128,6 +128,11 @@
         margin-top: auto;
     }
 
+    .dislike {
+        margin-top: auto;
+        display: none;
+    }
+
     .index {
         position: relative;
         padding: 5px;

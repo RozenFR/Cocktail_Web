@@ -50,6 +50,10 @@
         margin-right: 8px;
     }
 
+    .Links:hover {
+        background-color: var(--buttons);
+    }
+
     #active {
         background-color: var(--accent);
     }

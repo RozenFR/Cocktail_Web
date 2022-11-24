@@ -40,11 +40,16 @@ function active() {
             document.getElementsByName('Link')[0].id = 'active';
             break;
         case 'index.php':
-            console.log(document.getElementsByName('Link'));
             document.getElementsByName('Link')[0].id = 'active';
             break;
         case 'favourites.php':
             document.getElementsByName('Link')[1].id = 'active';
+            break;
+        case 'login.php':
+            document.getElementsByName('Link')[2].id = 'active';
+            break;
+        case 'register.php':
+            document.getElementsByName('Link')[3].id = 'active';
             break;
     }
 }

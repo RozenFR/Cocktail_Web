@@ -97,7 +97,7 @@
     }
 
     form[title="Register"] input:placeholder-shown {
-        border: var(--buttons) 1px solid;
+        border: var(--background-secondary) 1px solid;
     }
 
     form[title="Register"]>.inputBox>input:focus~span>legend {
@@ -149,13 +149,16 @@
     }
 
     form[title="Register"]>a {
-        background-color: var(--buttons);
+        background-color: var(--background-secondary);
         display: grid;
         justify-content: center;
         align-content: center;
-        vertical-align: middle;
         max-height: 56px;
         border-radius: 4px;
+    }
+
+    form[title="Register"]>a:hover {
+        background-color: var(--buttons);
     }
 
     span[title="Gender_Field"] {
