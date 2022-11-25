@@ -15,7 +15,7 @@
 ?>
 <?php
     $leafs = array();
-    
+    // ? This function returns all leafs from the node $current in $array and modifies $leafs by reference 
     function getLeaf($array, $current, &$leafs) {
         if(isset($array[$current]['sous-categorie'])) {
             foreach($array[$current]['sous-categorie'] as $i => $item) {
@@ -70,12 +70,14 @@
                     </span>
                 </div>
                 <?php 
+                    // ✗ Prints every sub category of the current aliment
                     if(isset($Hierarchie[$current]['sous-categorie'])) {?>
                         <span>Sous-categorie</span>
                         <?php foreach($Hierarchie[$current]['sous-categorie'] as $i => $item) { ?>
                             <a href="/index.php?current=<?php print_r($item);?>"><?php print_r($item); ?></a>
                         <?php }
                     }
+                    // ✗ Prints every super category of the current aliment
                     if(isset($Hierarchie[$current]['super-categorie'])) { ?>
                         <span>Super-Categorie</span>
                         <?php foreach($Hierarchie[$current]['super-categorie'] as $i => $item) { ?>
@@ -86,6 +88,7 @@
             </article>
             <article id="List">
                 <?php
+                    // ✗ For every recipes, if one of their ingreidient is in $leafs set $status to true
                     for($i = 0; $i < count($Recettes); $i++) {
                         $ingredients = $Recettes[$i]['index'];
                         for($k = 0; $k < count($ingredients); $k++) {
@@ -97,35 +100,44 @@
                                 $status = false;
                             }
                         }
+                        // ✗ If $status is true, display every recipes with their title, list of ingredients and index
                         if($status) { ?>
                         <a class="List_Item"<?php
+                        // ? Remove all punctuation
                         $title = multiexplode(array(",", ":", "(", ")"), $Recettes[$i]['titre']);
+                        // ? Slugify the first part of the title before any punctuation
                         $title2 = rtrim(slug($title[0]), "-");
+                        // ? Add the image to the background with css styling
                         echo "style='background-image:url(".'"'."/Photos/".strtolower($title2).".jpg".'"'.");'"; 
                         echo 'href="/product.php?index='.$i.'"'; 
                         ?>>
                             <div class="List_content">
                                 <div class="Top">
+                                    // ! Print the index
                                     <span class="index"><?php print_r($i); ?></span>
                                     <legend>
                                     <?php 
                                         $title = multiexplode(array(",", ":", "("), $Recettes[$i]['titre']);
+                                        // ! Print only the first part of the title before any punctuation
                                         print_r($title[0]); 
                                     ?></legend>
                                 </div>
                                 <div class="Bottom">
                                     <ul title="Ingredient_Field">
                                     <?php 
+                                        // ! Print each ingredient as a list item
                                         for($j = 0; $j < count($ingredients); $j++) { ?>
                                             <li><?php print_r($ingredients[$j]); ?></li>
                                         <?php }
                                     ?>
                                     </ul>
+                                    // ? Returns false to override the default browser behaviour to redirect
                                     <button class="like" onclick="return false;">
                                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                                         </svg>
                                     </button>
+                                    // ? Returns false to override the default browser behaviour to redirect
                                     <button class="dislike" onclick="return false;">
                                         <svg width="25" height="25" viewBox="0 0 25 25" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
