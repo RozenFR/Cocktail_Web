@@ -113,31 +113,26 @@
                         ?>>
                             <div class="List_content">
                                 <div class="Top">
-                                    // ! Print the index
                                     <span class="index"><?php print_r($i); ?></span>
                                     <legend>
                                     <?php 
                                         $title = multiexplode(array(",", ":", "("), $Recettes[$i]['titre']);
-                                        // ! Print only the first part of the title before any punctuation
                                         print_r($title[0]); 
                                     ?></legend>
                                 </div>
                                 <div class="Bottom">
                                     <ul title="Ingredient_Field">
                                     <?php 
-                                        // ! Print each ingredient as a list item
                                         for($j = 0; $j < count($ingredients); $j++) { ?>
                                             <li><?php print_r($ingredients[$j]); ?></li>
                                         <?php }
                                     ?>
                                     </ul>
-                                    // ? Returns false to override the default browser behaviour to redirect
                                     <button class="like" onclick="return false;">
                                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                                         </svg>
                                     </button>
-                                    // ? Returns false to override the default browser behaviour to redirect
                                     <button class="dislike" onclick="return false;">
                                         <svg width="25" height="25" viewBox="0 0 25 25" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
