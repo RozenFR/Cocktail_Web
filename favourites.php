@@ -37,8 +37,13 @@
   <main>
     <div id="Main" title="Favourites">  
     <?php
-    $fav_cookie = $_COOKIE['tempLikes'];
-    $fav_array = multiexplode(',', $fav_cookie);
+    if(isset($_COOKIE['tempLikes'])) {
+        $fav_cookie = $_COOKIE['tempLikes'];
+        $fav_array = multiexplode(',', $fav_cookie);
+    }
+    else {
+        $fav_array = [];
+    }
     ?>
     <article id="List">
     <?php for($i = 0; $i < count($Recettes); $i++) {
