@@ -15,7 +15,7 @@
 ?>
 <?php
     $leafs = array();
-    // ? This function returns all leafs from the node $current in $array and modifies $leafs by reference 
+    // ? This function returns all childrens (nodes & leafs) from the node $current in $array and modifies $leafs by reference 
     function getLeaf($array, $current, &$leafs) {
         if(isset($array[$current]['sous-categorie'])) {
             foreach($array[$current]['sous-categorie'] as $i => $item) {
@@ -35,10 +35,10 @@
         for($z = 0; $z < count($Recettes); $z++) {
             if(in_array($z, $arrayLikes)) {
                 $likesAlpha[] = $Recettes[$z]['titre'];
-                sort($likesAlpha);
-                setcookie("likesSortedAlpha", json_encode($likesAlpha));
+                usort($likesAlpha, 'strnatcasecmp');
             }
         }
+        setcookie("likesSortedAlpha", json_encode($likesAlpha));
     }
 ?>
 <!DOCTYPE html>

@@ -68,8 +68,6 @@ function loadLikes() {
         console.log(likes);
         if(uri == "index.php") {
             likes.forEach(element => {
-                console.log(dislike);
-                console.log(dislike.length);
                 dislike[element].style.display = "block";
                 like[element].style.display = "none";
             });

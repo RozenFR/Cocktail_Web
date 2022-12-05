@@ -39,6 +39,7 @@
     <?php
     if(isset($_COOKIE['tempLikes'])) {
         $fav_cookie = $_COOKIE['tempLikes'];
+        $cookieLikesAlpha = $_COOKIE['likesSortedAlpha'];
         $fav_array = multiexplode(',', $fav_cookie);
     }
     else {
@@ -46,7 +47,7 @@
     }
     ?>
     <article id="List">
-    <?php for($i = 0; $i < count($Recettes); $i++) {
+    <?php foreach($fav_array as $i) {
         $ingredients = $Recettes[$i]['index'];
         if(in_array($i, $fav_array)) { ?>
         <a class="List_Item"<?php
