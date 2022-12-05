@@ -33,5 +33,9 @@ function active() {
         case 'register.php':
             document.getElementsByName('Link')[3].id = 'active';
             break;
+        case 'search.php':
+            console.log(document.querySelector('[title="Search"]'));
+            document.querySelector('[title="Search"]').id = 'active';
+            break;
     }
 }

@@ -77,7 +77,6 @@ function loadLikes() {
         } else if(uri == "search.php") {
             for($z = 0; $z < dislike.length; $z++) {
                 var id = dislike[$z].parentNode.parentNode.childNodes[1].childNodes[1].childNodes[0].data;
-                console.log(id);
                 if(likes.includes(id)) {
                     dislike[$z].style.display = "block";
                     like[$z].style.display = "none";

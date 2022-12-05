@@ -58,6 +58,10 @@
     #active {
         background-color: var(--accent);
     }
+    
+    input[id="active"][title="Search"] {
+        background-color: var(--accent) !important;
+    }
 
     #Recette {
         height: 100%;
@@ -72,7 +76,7 @@
         margin: 12.5px;
     }
 
-    #Search {
+    form[id="Search"] {
         cursor: text;
 
         width: 300px;
