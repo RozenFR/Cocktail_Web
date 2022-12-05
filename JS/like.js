@@ -64,7 +64,7 @@ function loadLikes() {
         console.log(cookie_str);
         var likes = cookie_str.split(',');
         console.log(likes);
-        if(uri== "index.php") {
+        if(uri == "index.php") {
             likes.forEach(element => {
                 dislike[element].style.display = "block";
                 like[element].style.display = "none";
@@ -74,7 +74,16 @@ function loadLikes() {
                 dislike[$i].style.display = "block";
                 like[$i].style.display = "none";
             }
-        } 
+        } else if(uri == "search.php") {
+            for($z = 0; $z < dislike.length; $z++) {
+                var id = dislike[$z].parentNode.parentNode.childNodes[1].childNodes[1].childNodes[0].data;
+                console.log(id);
+                if(likes.includes(id)) {
+                    dislike[$z].style.display = "block";
+                    like[$z].style.display = "none";
+                }
+            }
+        }
     }
 }
 

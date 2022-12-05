@@ -26,18 +26,13 @@ function multiexplode ($delimiters,$string) {
     <!-- CSS -->
     <style>
         @import url('/CSS/main.css');
-        @import url('/CSS/search.css');
+        @import url('/CSS/index.css');
         @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@500&display=swap');
     </style>
     <script defer src="/JS/theme.js"></script>
+    <script defer src="/JS/like.js"></script>
 </head>
 <body onload="active();onThemeSwitch();onAccentSwitch();">
-<!-- Aside -->
-<?php
-$path = $_SERVER['DOCUMENT_ROOT'];
-$path .= "/HTML/navbar.html";
-include_once($path);
-?>
 <!-- Main Content -->
 <main>
     <!-- Header -->
@@ -46,7 +41,8 @@ include_once($path);
     $path .= "/PHP/header.php";
     include_once($path)
     ?>
-    <div class="flex-content">
+    <div id="Main" title="Search">
+        <article id="List">
         <?php
         /* Setup URL params in PHP */
         /* Setup "something in it" */
@@ -95,23 +91,49 @@ include_once($path);
 
 
             if ($status) { ?>
-                <div class="flex-item">
-                    <legend>
-                        <?php
-                        print_r($title[0]);
-                        ?></legend>
-                    <img src="/Photos/black-velvet.jpg" alt="">
-                    <ul title="Ingredient_Field">
-                        <?php for($j = 0; $j < count($ingredients); $j++) { ?>
-                            <li><?php print_r($ingredients[$j]); ?></li>
-                        <?php }
-                        ?>
-                    </ul>
-                    <!-- <p><?php print_r($i); ?></p> -->
-                </div>
+                <a class="List_Item"<?php
+                    // ? Remove all punctuation
+                    $title = multiexplode(array(",", ":", "(", ")"), $Recettes[$i]['titre']);
+                    // ? Slugify the first part of the title before any punctuation
+                    $title2 = rtrim(slug($title[0]), "-");
+                    // ? Add the image to the background with css styling
+                    echo "style='background-image:url(".'"'."/Photos/".strtolower($title2).".jpg".'"'.");'"; 
+                    echo 'href="/product.php?index='.$i.'"'; 
+                    ?>>
+                        <div class="List_content">
+                            <div class="Top">
+                                <span class="index"><?php print_r($i); ?></span>
+                                <legend>
+                                <?php 
+                                    $title = multiexplode(array(",", ":", "("), $Recettes[$i]['titre']);
+                                    print_r($title[0]); 
+                                ?></legend>
+                            </div>
+                            <div class="Bottom">
+                                <ul title="Ingredient_Field">
+                                <?php 
+                                    for($j = 0; $j < count($Recettes[$i]['index']); $j++) { ?>
+                                        <li><?php print_r($Recettes[$i]['index'][$j]); ?></li>
+                                    <?php }
+                                ?>
+                                </ul>
+                                <button class="like" onclick="return false;">
+                                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                    </svg>
+                                </button>
+                                <button class="dislike" onclick="return false;">
+                                    <svg width="25" height="25" viewBox="0 0 25 25" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </a>
             <?php } ?>
         <?php }
         ?>
+        </article>
     </div>
 
 </main>
