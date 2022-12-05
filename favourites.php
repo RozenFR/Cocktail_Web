@@ -28,16 +28,16 @@
   </head>
   <body onload="active();onThemeSwitch();onAccentSwitch();">
     <main>
-      <?php
-        $path = $_SERVER['DOCUMENT_ROOT'];
-        $path .= "/PHP/header.php";
-        include_once($path)
-      ?>
-      <?php
-      //$fav_array = range(0, count($Recettes));
-      //shuffle($fav_array );
-      //$fav_array = array_slice($fav_array ,0,5);
-?>
+    <?php
+    $path = $_SERVER['DOCUMENT_ROOT'];
+    $path .= "/PHP/header.php";
+    include_once($path);
+    ?>
+    <?php
+    $fav_cookie = $_COOKIE['tempLikes'];
+    $fav_array = multiexplode(',', $fav_cookie);
+    print_r($fav_array);
+    ?>
       <?php for ($i=0; $i < count($Recettes); $i++) {
         if (in_array($i,$fav_array)){ ?>
           <div <?php
