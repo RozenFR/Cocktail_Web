@@ -19,11 +19,25 @@
     function getLeaf($array, $current, &$leafs) {
         if(isset($array[$current]['sous-categorie'])) {
             foreach($array[$current]['sous-categorie'] as $i => $item) {
+                $leafs[] = $item;
                 getLeaf($array, $item, $leafs);
             }
         }
         else if(!in_array($current, $leafs)) {
             $leafs[] = $current;
+        }
+    }
+?>
+<?php 
+    if(isset($_COOKIE['tempLikes'])) {
+        $likesIndex = $_COOKIE['tempLikes'];
+        $arrayLikes = explode(',', $likesIndex);
+        for($z = 0; $z < count($Recettes); $z++) {
+            if(in_array($z, $arrayLikes)) {
+                $likesAlpha[] = $Recettes[$z]['titre'];
+                sort($likesAlpha);
+                setcookie("likesSortedAlpha", json_encode($likesAlpha));
+            }
         }
     }
 ?>

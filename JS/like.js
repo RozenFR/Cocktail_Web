@@ -48,6 +48,8 @@ dislike.forEach((button, index) => {
         }
         like[index].style.display = "block";
         dislike[index].style.display = "none";
+
+        document.cookie = "tempLikes=" + liked;
     });
 });
 
@@ -66,6 +68,8 @@ function loadLikes() {
         console.log(likes);
         if(uri == "index.php") {
             likes.forEach(element => {
+                console.log(dislike);
+                console.log(dislike.length);
                 dislike[element].style.display = "block";
                 like[element].style.display = "none";
             });
