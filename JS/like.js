@@ -45,15 +45,28 @@ dislike.forEach((button, index) => {
 });
 
 function loadLikes() {
+    
+
     var cookie_str = getCookie("tempLikes");
     if(typeof cookie_str !== "undefined") {
+        var url = document.location.href;
+        var urlArray = url.split('/');
+        var uri = urlArray[urlArray.length - 1];
+        uri = uri.split('?')[0];
         console.log(cookie_str);
         var likes = cookie_str.split(',');
         console.log(likes);
-        likes.forEach(element => {
-            dislike[element].style.display = "block";
-            like[element].style.display = "none";
-        });
+        if(uri== "index.php") {
+            likes.forEach(element => {
+                dislike[element].style.display = "block";
+                like[element].style.display = "none";
+            });
+        } else if(uri == "favourites.php") {
+            for($i = 0; $i < likes.length; $i++) {
+                dislike[$i].style.display = "block";
+                like[$i].style.display = "none";
+            }
+        } 
     }
 }
 

@@ -22,6 +22,16 @@
         scrollbar-width: thin;
     }
 
+    div[id="Main"][title="Favourites"] > article[id="List"] {
+        width: calc(100vw - 10px - 1rem);
+        max-height: calc(100vh - 60px - 1rem);
+        margin: 0px;
+    }
+
+    div[id="Main"][title="Favourites"] > #List {
+        margin: 0 0.5rem 1rem 0.5rem;
+    }
+
     #Main > article::-webkit-scrollbar {
         width: calc(1rem / 3);
         -webkit-border-radius: calc(1rem / 3);
@@ -53,6 +63,10 @@
         justify-content: center;
         background-size: cover;
         border-radius: 0.25rem;
+    }
+
+    div[id="Main"][title="Favourites"] > #List > a {
+        width: calc((100% - 3 * 5px) / 4);
     }
 
     .List_content {
