@@ -16,11 +16,6 @@
         $path .= "/PHP/isAuth.php";
         include_once($path);
     ?>
-    <?php 
-        $path = $_SERVER['DOCUMENT_ROOT'];
-        $path .= "/HTML/navbar.html";
-        include_once($path);
-    ?>
     <main>
         <?php 
             $path = $_SERVER['DOCUMENT_ROOT'];
