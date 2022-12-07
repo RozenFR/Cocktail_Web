@@ -1,4 +1,5 @@
-<?php 
+<?php session_start(); ?>
+<?php
     $path = $_SERVER['DOCUMENT_ROOT'];
     $path .= "/data.php";
     include_once($path);
@@ -41,6 +42,16 @@
         setcookie("likesSortedAlpha", json_encode($likesAlpha));
     }
 ?>
+
+<?php
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/PHP/updateLikes.php";
+include_once($path);
+
+// Run function each time page is refresh
+likesUpdate();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

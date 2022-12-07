@@ -19,10 +19,17 @@
             <path d="M21 20.9999L16.65 16.6499" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
     </form>
-    <span title="Login/Register">
-            <a href="/login.php" class="Links" name="Link">Connexion</a>
-            <a href="/register.php" class="Links" name="Link">S'inscrire</a>
-    </span>
+    <?php if (!isset($_SESSION['username'])) { ?>
+        <span title="Login/Register">
+                <a href="/login.php" class="Links" name="Link">Connexion</a>
+                <a href="/register.php" class="Links" name="Link">S'inscrire</a>
+        </span>
+    <?php } else { ?>
+        <span title="Login/Register">
+                <a href="/profile.php" class="Links" name="Link">Profil</a>
+                <a href="/disconnect.php" class="Links" name="Link">Déconnecter</a>
+        </span>
+    <?php } ?>
     <div id="Open_Profile" onclick="openProfile();" title="Avatar">
         <svg viewBox="0 0 24 24" fill="none">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2m8-10a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

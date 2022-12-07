@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 $path = $_SERVER['DOCUMENT_ROOT'];
 $path .= "/data.php";

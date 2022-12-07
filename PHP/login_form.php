@@ -18,40 +18,14 @@ include_once($path);
             <h2>Create Account</h2>
         </legend>
         <span class="inputBox">
-            <input name="username" type="text" required="required"
-            <?php
-                if(isset($_POST['username'])) {
-                    $username = trim($_POST['username']);
-                    if(!ctype_alnum($username)) {
-                        echo "class='invalid'";
-                    }
-                    echo 'value="'.$username.'"'." class='valid'"; 
-                }
-                else if(isset($_POST['submit'])) {
-                    echo "class='invalid'";
-                }
-            ?>
-            />
+            <input name="username" type="text" required="required" class="<?= $username_validation ?>"/>
             <span title="required_span">
                 <legend>Identifiant</legend>
                 <legend class="required">Obligatoire</legend>
             </span>
         </span>
         <span class="inputBox">
-            <input name="password" type="text" required="required"
-            <?php
-                if(isset($_POST['password'])) {
-                    $password = trim($_POST['password']);
-                    if(!ctype_alnum($password)) {
-                        echo "class='invalid'";
-                    }
-                    echo 'value="'.$password.'"'." class='valid'"; 
-                }
-                else if(isset($_POST['submit'])) {
-                    echo "class='invalid'";
-                }
-            ?>
-            />
+            <input name="password" type="text" required="required" class="<?= $password_validation ?>"/>
             <span title="required_span">
                 <legend>Mot de Passe</legend>
                 <legend class="required">Obligatoire</legend>

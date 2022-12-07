@@ -119,9 +119,9 @@ if (isset($_POST['submit'])) {
             "cocktails" => []
         ];
 
-        $fp = file_get_contents('users.json');
+        $fp = file_get_contents('./users.json');
         $data = json_decode($fp, true);
-        if (!isset($data[$_POST['username']])) {
+        if (!isset($data[trim($_POST['username'])])) {
             $data[$_POST['username']] = $user;
             file_put_contents('users.json', json_encode($data));
         }
