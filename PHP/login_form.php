@@ -1,3 +1,9 @@
+<?php
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/PHP/login_post.php";
+include_once($path);
+?>
+
 <head>
     <style>
         @import url('/CSS/register.css');
