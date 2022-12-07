@@ -6,8 +6,7 @@ include_once($path);
 
 function likesUpdate() : void {
     // Process Cookie
-    $cookie_unprocessed = json_decode($_COOKIE['tempLikes']);
-    $cookie_likes = explode(',', $cookie_unprocessed);
+    $cookie_likes = json_decode($_COOKIE['tempLikes']);
     unset($cookie_likes[0]);
 
     if (isset($_SESSION['likesUpdated'])) {
@@ -53,6 +52,7 @@ function likesUpdate() : void {
         file_put_contents('users.json', json_encode($data));
         $_COOKIE['tempLikes'] = json_encode($_SESSION['cocktails']);
 
-        print_r($_SESSION['cocktails']);
+        echo '<h1> Session : '.print_r($_SESSION['cocktails'], true).'</h1>';
+        echo '<h1> Cookie : '.print_r(json_decode($_COOKIE['tempLikes']), true).'</h1>';
     }
 }
