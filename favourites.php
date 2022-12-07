@@ -15,6 +15,14 @@
         return $result;
     }
 ?>
+<?php
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/PHP/updateLikes.php";
+include_once($path);
+
+// Run function each time page is refresh
+likesUpdate();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

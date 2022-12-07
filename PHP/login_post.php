@@ -47,6 +47,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['first_name'] = $data[$username]['first_name'];
             $_SESSION['date'] = $data[$username]['date'];
             $_SESSION['cocktails'] = $data[$username]['cocktails'];
+            $_SESSION['likesUpdated'] = "no";
 
             $host = $_SERVER['HTTP_HOST'];
             $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
