@@ -53,7 +53,7 @@ if (isset($_POST['submit'])) {
     /**
      * name is defined and is not only min/maj letters and space
      */
-    if ( !isset($_POST['name']) || !preg_match("^[a-zA-Z\s]*$", trim($_POST['name'])) ) {
+    if ( !isset($_POST['name']) || !ctype_alpha(trim($_POST['name'])) ) {
         $valid_post = false;
         $validation_name = "invalid";
     } else $validation_name = "valid";
@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
     /**
      * first_name is defined and not only min/maj letters and space
      */
-    if ( !isset($_POST['first_name']) || !preg_match("^[a-zA-Z\s]*$", trim($_POST['first_name'])) ) {
+    if ( !isset($_POST['first_name']) || !ctype_alpha(trim($_POST['first_name'])) ) {
         $valid_post = false;
         $validation_first_name = "invalid";
     } else $validation_first_name = "valid";
@@ -107,6 +107,7 @@ if (isset($_POST['submit'])) {
     }
 
     if ($valid_post) {
+        print_r("Enter");
         $user = [
             "username" => $_POST['username'],
             "mail" => $_POST['mail'],
