@@ -24,7 +24,7 @@ function likesUpdate() : void {
             $_SESSION['likesUpdated'] = "yes";
         } else {
             /*
-             * On bloucle sur le Cookie, on regarde si il y a une update à faire :
+             * On boucle sur le Cookie, on regarde si il y a une update à faire :
              * - Si element pas dans la Session, on l'ajoute
              * - Si element est dans la Session, on fait rien
              * */
