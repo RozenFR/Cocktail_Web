@@ -6,7 +6,12 @@ include_once($path);
 
 function likesUpdate() : void {
     // Process Cookie
-    $cookie_likes = json_decode($_COOKIE['tempLikes']);
+    if(isset($_COOKIE['tempLikes'])) {
+        $cookie_likes = json_decode($_COOKIE['tempLikes']);
+    }
+    else {
+        $cookie_likes = [];
+    }
     unset($cookie_likes[0]);
 
     if (isset($_SESSION['likesUpdated'])) {
