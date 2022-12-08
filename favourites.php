@@ -35,6 +35,7 @@ likesUpdate();
         @import url('/CSS/index.css');
         @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@500&display=swap');
     </style>
+    <script src="/JS/jquery-3.6.1.min.js"></script>
     <script defer src="/JS/like.js"></script>
   </head>
   <body onload="active();onThemeSwitch();onAccentSwitch();">
@@ -46,18 +47,17 @@ likesUpdate();
   <main>
     <div id="Main" title="Favourites">  
     <?php
-    if(isset($_COOKIE['tempLikes'])) {
-        $fav_cookie = $_COOKIE['tempLikes'];
-        $fav_array = multiexplode(',', $fav_cookie);
+    if(isset($_SESSION['username'])) {
+        $fav_array = $_SESSION['cocktails'];
+        print_r($fav_array);
     }
     else {
-        $fav_array = [];
-    }
-    if(isset($_COOKIE['likesSortedAlpha'])) {
-        $cookieLikesAlpha = $_COOKIE['likesSortedAlpha'];
-    }
-    else {
-        $cookieLikesAlpha = [];
+        if(isset($_COOKIE['tempLikes'])) {
+            $fav_array = json_decode($_COOKIE['tempLikes']);
+        }
+        else {
+            $fav_array = [];
+        }
     }
     ?>
     <article id="List">

@@ -65,6 +65,7 @@ likesUpdate();
         @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@500&display=swap');
     </style>
     <script defer src="/JS/theme.js"></script>
+    <script src="/JS/jquery-3.6.1.min.js"></script>
     <script defer src="/JS/like.js"></script>
 </head>
 <body onload="active();onThemeSwitch();onAccentSwitch();">

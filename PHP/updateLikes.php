@@ -12,7 +12,6 @@ function likesUpdate() : void {
     else {
         $cookie_likes = [];
     }
-    unset($cookie_likes[0]);
 
     if (isset($_SESSION['likesUpdated'])) {
         if ($_SESSION['likesUpdated'] == "no") {
@@ -57,7 +56,7 @@ function likesUpdate() : void {
         file_put_contents('users.json', json_encode($data));
         $_COOKIE['tempLikes'] = json_encode($_SESSION['cocktails']);
 
-        echo '<h1> Session : '.print_r($_SESSION['cocktails'], true).'</h1>';
-        echo '<h1> Cookie : '.print_r(json_decode($_COOKIE['tempLikes']), true).'</h1>';
+        // echo '<h1> Session : '.print_r($_SESSION['cocktails'], true).'</h1>';
+        // echo '<h1> Cookie : '.print_r(json_decode($_COOKIE['tempLikes']), true).'</h1>';
     }
 }
