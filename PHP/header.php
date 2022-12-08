@@ -1,3 +1,11 @@
+<?php
+if (isset($_SESSION['username'])) {
+    $connected = true;
+} 
+else {
+    $connected = false;
+}
+?>
 <head>
     <style>
         @import url('/CSS/header.css');
@@ -19,7 +27,7 @@
             <path d="M21 20.9999L16.65 16.6499" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
     </form>
-    <?php if (!isset($_SESSION['username'])) { ?>
+    <?php if (!$connected) { ?>
         <span title="Login/Register">
                 <a href="/login.php" class="Links" name="Link">Connexion</a>
                 <a href="/register.php" class="Links" name="Link">S'inscrire</a>
