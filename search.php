@@ -56,7 +56,12 @@ likesUpdate();
         /* Setup "something in it" */
         $raw_content = $_GET['content'];
         $a_content = explode('"', $raw_content);
-        $ingredient = $a_content[1];
+        if(isset($a_content[1])) {
+            $ingredient = $a_content[1];
+        }
+        else {
+            $ingredient = '';
+        }
 
         /* Setup Filter '+' et '-' */
         $posfilter = [];

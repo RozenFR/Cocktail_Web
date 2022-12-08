@@ -48,11 +48,16 @@ likesUpdate();
     <?php
     if(isset($_COOKIE['tempLikes'])) {
         $fav_cookie = $_COOKIE['tempLikes'];
-        $cookieLikesAlpha = $_COOKIE['likesSortedAlpha'];
         $fav_array = multiexplode(',', $fav_cookie);
     }
     else {
         $fav_array = [];
+    }
+    if(isset($_COOKIE['likesSortedAlpha'])) {
+        $cookieLikesAlpha = $_COOKIE['likesSortedAlpha'];
+    }
+    else {
+        $cookieLikesAlpha = [];
     }
     ?>
     <article id="List">

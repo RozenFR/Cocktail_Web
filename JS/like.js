@@ -25,9 +25,7 @@ like.forEach((button, index) => {
         var id = button.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[0].data;
         if(!liked.includes(id)) {
             liked.push(id);
-            liked.sort(function(a, b) {
-                return a - b;
-            });
+            liked.sort(function(a, b) { return a - b; });
         }
         dislike[index].style.display = "block";
         like[index].style.display = "none";
@@ -42,9 +40,7 @@ dislike.forEach((button, index) => {
         var id = button.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[0].data;
         if(liked.includes(id)) {
             liked.splice(liked.indexOf(id), 1);
-            liked.sort(function(a, b) {
-                return a - b;
-            });
+            liked.sort(function(a, b) { return a - b; });
         }
         like[index].style.display = "block";
         dislike[index].style.display = "none";
@@ -67,23 +63,35 @@ function loadLikes() {
         var likes = cookie_str.split(',');
         console.log(likes);
         if(uri == "index.php") {
-            likes.forEach(element => {
-                dislike[element].style.display = "block";
-                like[element].style.display = "none";
-            });
+            loadIndex(likes);
         } else if(uri == "favourites.php") {
-            for($i = 0; $i < likes.length; $i++) {
-                dislike[$i].style.display = "block";
-                like[$i].style.display = "none";
-            }
+            loadFavourites(likes);
         } else if(uri == "search.php") {
-            for($z = 0; $z < dislike.length; $z++) {
-                var id = dislike[$z].parentNode.parentNode.childNodes[1].childNodes[1].childNodes[0].data;
-                if(likes.includes(id)) {
-                    dislike[$z].style.display = "block";
-                    like[$z].style.display = "none";
-                }
-            }
+            loadSearch(likes);
+        }
+    }
+}
+
+function loadIndex(likes) {
+    likes.forEach(element => {
+        dislike[element].style.display = "block";
+        like[element].style.display = "none";
+    });
+}
+
+function loadFavourites(likes) {
+    for($i = 0; $i < likes.length; $i++) {
+        dislike[$i].style.display = "block";
+        like[$i].style.display = "none";
+    }
+}
+
+function loadSearch(likes) {
+    for($z = 0; $z < dislike.length; $z++) {
+        var id = dislike[$z].parentNode.parentNode.childNodes[1].childNodes[1].childNodes[0].data;
+        if(likes.includes(id)) {
+            dislike[$z].style.display = "block";
+            like[$z].style.display = "none";
         }
     }
 }
