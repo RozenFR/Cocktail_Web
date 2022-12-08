@@ -72,7 +72,7 @@ include($path);
 <!--    Gender    -->
         <span title="Gender_Field" class="<?= $validation_gender ?>">
             <div>
-                <input value="h" type="radio" name="gender" checked="<?= $checked_m ?>"/>
+                <input value="h" type="radio" name="gender" <?= $checked_m ?>/>
                 <svg class="Radio_Checked" viewBox="0 0 24 24" fill="none">
                     <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="m9 11 3 3L22 4" stroke="#FF6740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -83,7 +83,7 @@ include($path);
                 <label>Homme</label>
             </div>
             <div>
-                <input value="f" type="radio" name="gender" checked="<?= $checked_f ?>"/>
+                <input value="f" type="radio" name="gender" <?= $checked_f ?>/>
                 <svg class="Radio_Checked" viewBox="0 0 24 24" fill="none">
                     <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="m9 11 3 3L22 4" stroke="#FF6740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

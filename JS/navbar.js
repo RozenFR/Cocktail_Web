@@ -30,6 +30,9 @@ function active() {
         case 'login.php':
             document.getElementsByName('Link')[2].id = 'active';
             break;
+        case 'profile.php':
+            document.getElementsByName('Link')[2].id = 'active';
+            break;
         case 'register.php':
             document.getElementsByName('Link')[3].id = 'active';
             break;

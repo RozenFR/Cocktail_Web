@@ -35,7 +35,7 @@ else {
     <?php } else { ?>
         <span title="Login/Register">
                 <a href="/profile.php" class="Links" name="Link">Profil</a>
-                <a href="/disconnect.php" class="Links" name="Link">Déconnecter</a>
+                <a href="/disconnect.php" class="Links">Déconnecter</a>
         </span>
     <?php } ?>
     <div id="Open_Profile" onclick="openProfile();" title="Avatar">
