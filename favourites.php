@@ -49,7 +49,6 @@ likesUpdate();
     <?php
     if(isset($_SESSION['username'])) {
         $fav_array = $_SESSION['cocktails'];
-        print_r($fav_array);
     }
     else {
         if(isset($_COOKIE['tempLikes'])) {

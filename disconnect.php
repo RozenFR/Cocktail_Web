@@ -2,6 +2,7 @@
 
 session_start();
 session_destroy();
+setcookie("tempLikes", "");
 header('Location:index.php');
 $host = $_SERVER['HTTP_HOST'];
 $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
