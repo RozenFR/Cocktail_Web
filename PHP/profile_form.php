@@ -2,11 +2,12 @@
 $path = $_SERVER['DOCUMENT_ROOT'];
 $path .= "/PHP/isAuth.php";
 include_once($path);
+isAuthenticated('index.php');
 ?>
 
 <?php
 $path = $_SERVER['DOCUMENT_ROOT'];
-$path .= "/PHP/register_post.php";
+$path .= "/PHP/profile_post.php";
 include($path);
 ?>
 
@@ -36,13 +37,13 @@ include($path);
         <span class="inputBox">
             <input name="password" class="<?= $validation_password ?>" type="text" required="required"/>
             <span title="required_span">
-                <legend>Mot de passe</legend>
+                <legend>Nouveau Mot de passe</legend>
                 <legend class="required">Obligatoire</legend>
             </span>
         </span>
 
         <span class="inputBox">
-            <input name="password" class="<?= $validation_password ?>" type="text" required="required"/>
+            <input name="confirm_password" class="<?= $validation_password ?>" type="text" required="required"/>
             <span title="required_span">
                 <legend>Confirmer Mot de passe</legend>
                 <legend class="required">Obligatoire</legend>
