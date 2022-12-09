@@ -86,6 +86,7 @@ likesUpdate();
 
         $reg_pm = '/[a-zA-Z\s]+/';
         /* Setup search var */
+        $splus = []; $sminus = [];
         foreach ($plus[0] as $item) {
             preg_match_all($reg_pm, $item, $temp);
             $splus[] = $temp[0][0];
@@ -96,35 +97,31 @@ likesUpdate();
             $sminus[] = $temp[0][0];
         }
 
-        $singredient = $ingredient[0];
+        $singredient = $ingredient[0][0];
 
         for($i = 0; $i < count($Recettes); $i++) {
-//            $title = multiexplode(array(",", ":", "("), $Recettes[$i]['titre']);
-//            $ingredients = explode('|', $Recettes[$i]['ingredients']);
-//
-//            $status = true;
-//
-//            if (strpos(strtolower($Recettes[$i]['ingredients']), strtolower($ingredient)) === false)
-//                $status = false;
-//
-//            if ($status && count($posfilter) > 0) {
-//                for ($j = 0; $j < count($posfilter); $j++) {
-//                    $subf = substr($posfilter[$j], 1);
-//                    if (strpos(strtolower($Recettes[$i]['ingredients']), strtolower($subf)) === false)
-//                        $status = false;
-//                }
-//            }
-//
-//            if ($status && count($negfilter) > 0) {
-//                for ($j = 0; $j < count($negfilter); $j++) {
-//                    $subf = substr($negfilter[$j], 1);
-//                    if (strpos(strtolower($Recettes[$i]['ingredients']), strtolower($subf)) !== false)
-//                        $status = false;
-//                }
-//            }*/
+            $title = multiexplode(array(",", ":", "("), $Recettes[$i]['titre']);
 
             $status = true;
+            $r_wquotes = '/('.strtolower($singredient).')/';
+            $r_quotes = str_replace('"', '', $r_wquotes);
 
+            if (!preg_match($r_quotes, strtolower($Recettes[$i]['ingredients'])))
+                $status = false;
+
+            foreach ($splus as $item) {
+                $r_pwquotes = '/('.strtolower($item).')/';
+                $r_pquotes = str_replace('"', '', $r_pwquotes);
+                if (!preg_match($r_pquotes, strtolower($Recettes[$i]['ingredients'])))
+                    $status = false;
+            }
+
+            foreach ($sminus as $item) {
+                $r_mwquotes = '/('.strtolower($item).')/';
+                $r_mquotes = str_replace('"', '', $r_mwquotes);
+                if (preg_match($r_mquotes, strtolower($Recettes[$i]['ingredients'])))
+                    $status = false;
+            }
 
             if ($status) { ?>
                 <a class="List_Item"<?php
