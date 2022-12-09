@@ -17,7 +17,7 @@ include($path);
     </style>
 </head>
 <body>
-    <form title="Register" method="post" action="register.php">
+    <form title="Register" method="post" action="profile.php">
         <legend title="Create">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path data-v-20f285ec="" d="M19 12H5m7 7-7-7 7-7"/>
@@ -27,7 +27,7 @@ include($path);
 
 <!--    Email    -->
         <span class="inputBox unrequired">
-            <input name="mail" class="<?= $validation_mail ?>" type="text" placeholder=" " pattern="[a-z0-9._%+-]+@[a-z0-9._-]+\.[a-z]{2,4}$"/>
+            <input name="mail" class="<?= $validation_mail ?>" type="text" placeholder=" " pattern="[a-z0-9._%+-]+@[a-z0-9._-]+\.[a-z]{2,4}$" value="<?= $_SESSION['mail'] ?>"/>
             <span>
                 <legend>Email</legend>
             </span>
@@ -35,7 +35,7 @@ include($path);
 
 <!--    Password    -->
         <span class="inputBox">
-            <input name="password" class="<?= $validation_password ?>" type="text" required="required"/>
+            <input name="password" class="<?= $validation_password ?>" type="text"/>
             <span title="required_span">
                 <legend>Nouveau Mot de passe</legend>
                 <legend class="required">Obligatoire</legend>
@@ -43,7 +43,7 @@ include($path);
         </span>
 
         <span class="inputBox">
-            <input name="confirm_password" class="<?= $validation_password ?>" type="text" required="required"/>
+            <input name="confirm_password" class="<?= $validation_password ?>" type="text"/>
             <span title="required_span">
                 <legend>Confirmer Mot de passe</legend>
                 <legend class="required">Obligatoire</legend>

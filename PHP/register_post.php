@@ -53,47 +53,69 @@ if (isset($_POST['submit'])) {
     /**
      * name is defined and is not only min/maj letters and space
      */
-    if ( !isset($_POST['name']) || !ctype_alpha(trim($_POST['name'])) ) {
-        $valid_post = false;
-        $validation_name = "invalid";
-    } else $validation_name = "valid";
+    if ( isset($_POST['name']) && ctype_alpha(trim($_POST['name'])) ) {
+        if (!empty($_POST['name'])) {
+            $validation_name = 'valid';
+        } else {
+            $valid_post = false;
+            $validation_first_name = 'invalid';
+        }
+    } else {
+        $validation_name = 'valid';
+    }
 
     /**
      * first_name is defined and not only min/maj letters and space
      */
-    if ( !isset($_POST['first_name']) || !ctype_alpha(trim($_POST['first_name'])) ) {
-        $valid_post = false;
-        $validation_first_name = "invalid";
-    } else $validation_first_name = "valid";
+    if ( isset($_POST['first_name']) && ctype_alpha(trim($_POST['first_name'])) ) {
+        if (!empty($_POST['first_name'])) {
+            $validation_first_name = 'valid';
+        } else {
+            $valid_post = false;
+            $validation_first_name = 'invalid';
+        }
+    } else {
+        $validation_first_name = 'valid';
+    }
 
     /**
      * date is defined and date different than ""
      * - date is not a date
      * - user is more than 18
      */
-    if (isset($_POST['date']) && $_POST['date'] != "") {
+    print_r('date : '.empty($_POST['date']));
+    if (isset($_POST['date']) && !empty($_POST['date'])) {
         list($year, $month, $day) = explode('-', $_POST['date']);
-        if (!checkdate($year, $month, $day)) {
+        if (checkdate((int) $month, (int) $day, (int) $year) === true) {
             $actual_date = date('Y-m-d');
             $new_year = $year + 18;
             $limit_date = $new_year . "-" . $month . "-" . $day;
-            if ($limit_date > $actual_date) {
-                $valid_post = false;
+            if ($limit_date < $actual_date) {
+                $validation_date = "valid";
+            } else {
                 $validation_date = "invalid";
-            } $validation_date = "valid";
-        } else $validation_date = "valid";
-    } else $validation_date = "valid";
+                $valid_post = false;
+            }
+        } else {
+            $validation_date = "invalid";
+            $valid_post = false;
+        }
+    } else {
+        $validation_date = "valid";
+    }
 
     /**
      * Gender is defined
      * - gender different than h and f and o
      */
     if (isset($_POST['gender'])) {
-        if ($_POST['gender'] != 'h' && $_POST['gender'] != 'f') {
-            $valid_post = false;
+        if ($_POST['gender'] == 'h' xor $_POST['gender'] == 'f') {
+            $validation_gender = "valid";
+        } else {
             $validation_gender = "invalid";
-        } else $validation_gender = "valid";
-    } else $validation_gender = "valid";
+            $valid_post = false;
+        }
+    }
 
     /**
      * Checking box of gender
