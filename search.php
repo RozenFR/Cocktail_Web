@@ -38,7 +38,6 @@ likesUpdate();
         @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@500&display=swap');
     </style>
     <script defer src="/JS/theme.js"></script>
-    <script src="/JS/jquery-3.6.1.min.js"></script>
     <script defer src="/JS/like.js"></script>
 </head>
 <body onload="active();onThemeSwitch();onAccentSwitch();">
@@ -53,55 +52,78 @@ likesUpdate();
     <div id="Main" title="Search">
         <article id="List">
         <?php
-        /* Setup URL params in PHP */
-        /* Setup "something in it" */
-        $raw_content = $_GET['content'];
-        $a_content = explode('"', $raw_content);
-        if(isset($a_content[1])) {
-            $ingredient = $a_content[1];
-        }
-        else {
-            $ingredient = '';
+//        /* Setup URL params in PHP */
+//        /* Setup "something in it" */
+//        $raw_content = $_GET['content'];
+//        $a_content = explode('"', $raw_content);
+//        $ingredient = $a_content[1];
+//
+//        /* Setup Filter '+' et '-' */
+//        $posfilter = [];
+//        $negfilter = [];
+//        if (count($a_content) > 1) {
+//            $raw_filter_content = substr($a_content[2], 1);
+//            $filter_content = explode(" ", $raw_filter_content);
+//            for ($j = 0; $j < count($filter_content); $j++) {
+//                echo '<h1 class=test>'.print_r($filter_content).'</h1>';
+//                if ($filter_content[$j][0] == '+')
+//                    $posfilter[] = $filter_content[$j];
+//                if ($filter_content[$j][0] == '-')
+//                    $negfilter[] = $filter_content[$j];
+//            }
+//        }
+//
+        /* Setup Regex et get */
+        $reg_ingredient = '/[\"]?[a-zA-Z\s]+[\"]?/';
+        $reg_plus = '/[\+][\"]?[a-zA-Z\s]+[\"]?/';
+        $reg_minus = '/[\-][\"]?[a-zA-Z\s]+[\"]?/';
+        $get_content = $_GET['content'];
+
+        /* Use of regex and input in var */
+        preg_match_all($reg_ingredient, $get_content, $ingredient);
+        preg_match_all($reg_plus, $get_content, $plus);
+        preg_match_all($reg_minus, $get_content, $minus);
+
+        $reg_pm = '/[a-zA-Z\s]+/';
+        /* Setup search var */
+        foreach ($plus[0] as $item) {
+            preg_match_all($reg_pm, $item, $temp);
+            $splus[] = $temp[0][0];
         }
 
-        /* Setup Filter '+' et '-' */
-        $posfilter = [];
-        $negfilter = [];
-        if (count($a_content) > 1) {
-            $raw_filter_content = substr($a_content[2], 1);
-            $filter_content = explode(" ", $raw_filter_content);
-            for ($j = 0; $j < count($filter_content); $j++) {
-                if ($filter_content[$j][0] == '+')
-                    $posfilter[] = $filter_content[$j];
-                if ($filter_content[$j][0] == '-')
-                    $negfilter[] = $filter_content[$j];
-            }
+        foreach ($minus[0] as $item) {
+            preg_match_all($reg_pm, $item, $temp);
+            $sminus[] = $temp[0][0];
         }
+
+        $singredient = $ingredient[0];
 
         for($i = 0; $i < count($Recettes); $i++) {
-            $title = multiexplode(array(",", ":", "("), $Recettes[$i]['titre']);
-            $ingredients = explode('|', $Recettes[$i]['ingredients']);
+//            $title = multiexplode(array(",", ":", "("), $Recettes[$i]['titre']);
+//            $ingredients = explode('|', $Recettes[$i]['ingredients']);
+//
+//            $status = true;
+//
+//            if (strpos(strtolower($Recettes[$i]['ingredients']), strtolower($ingredient)) === false)
+//                $status = false;
+//
+//            if ($status && count($posfilter) > 0) {
+//                for ($j = 0; $j < count($posfilter); $j++) {
+//                    $subf = substr($posfilter[$j], 1);
+//                    if (strpos(strtolower($Recettes[$i]['ingredients']), strtolower($subf)) === false)
+//                        $status = false;
+//                }
+//            }
+//
+//            if ($status && count($negfilter) > 0) {
+//                for ($j = 0; $j < count($negfilter); $j++) {
+//                    $subf = substr($negfilter[$j], 1);
+//                    if (strpos(strtolower($Recettes[$i]['ingredients']), strtolower($subf)) !== false)
+//                        $status = false;
+//                }
+//            }*/
 
             $status = true;
-
-            if (strpos(strtolower($Recettes[$i]['ingredients']), strtolower($ingredient)) === false)
-                $status = false;
-
-            if ($status && count($posfilter) > 0) {
-                for ($j = 0; $j < count($posfilter); $j++) {
-                    $subf = substr($posfilter[$j], 1);
-                    if (strpos(strtolower($Recettes[$i]['ingredients']), strtolower($subf)) === false)
-                        $status = false;
-                }
-            }
-
-            if ($status && count($negfilter) > 0) {
-                for ($j = 0; $j < count($negfilter); $j++) {
-                    $subf = substr($negfilter[$j], 1);
-                    if (strpos(strtolower($Recettes[$i]['ingredients']), strtolower($subf)) !== false)
-                        $status = false;
-                }
-            }
 
 
             if ($status) { ?>
