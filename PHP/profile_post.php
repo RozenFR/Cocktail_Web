@@ -15,6 +15,7 @@ $valid_post = true;
 $validation_username = "";
 $validation_mail = "";
 $validation_name = "";
+$validation_password = "";
 $validation_first_name = "";
 $validation_date = "";
 $validation_gender = "";
@@ -28,11 +29,13 @@ if (isset($_POST['submit'])) {
     $data = json_decode($fp, true);
 
     $user['username'] = $_SESSION['username'];
+    $user['cocktails'] = $_SESSION['cocktails'];
+
     /**
      * mail is defined and is a mail
      */
-    if(isset($_POST['mail'])) {
-        if (!empty($_POST['mail']) && filter_var(trim($_POST['mail']), FILTER_VALIDATE_EMAIL)) {
+    if(isset($_POST['mail']) && !empty($_POST['mail'])) {
+        if (filter_var(trim($_POST['mail']), FILTER_VALIDATE_EMAIL)) {
             $user['mail'] = $_POST['mail'];
             $validation_mail = "valid";
         } else {
@@ -41,7 +44,6 @@ if (isset($_POST['submit'])) {
         }
     } else {
         $user['mail'] = $_SESSION['mail'];
-        $validation_mail = "valid";
     }
 
     /**
@@ -58,14 +60,13 @@ if (isset($_POST['submit'])) {
         }
     } else {
         $user['password'] = $data[$_SESSION['username']]['password'];
-        $validation_password = 'valid';
     }
 
     /**
      * name is defined and is not only min/maj letters and space
      */
-    if (isset($_POST['name'])) {
-        if (!empty($_POST['name']) && ctype_alpha(trim($_POST['name']))) {
+    if (isset($_POST['name']) && !empty($_POST['name'])) {
+        if (ctype_alpha(trim($_POST['name']))) {
             $user['name'] = $_POST['name'];
             $validation_name = 'valid';
         } else {
@@ -74,14 +75,13 @@ if (isset($_POST['submit'])) {
         }
     } else {
         $user['name'] = $_SESSION['name'];
-        $validation_name = 'valid';
     }
 
     /**
      * first_name is defined and not only min/maj letters and space
      */
-    if (isset($_POST['first_name'])) {
-        if (!empty($_POST['first_name']) && ctype_alpha(trim($_POST['first_name']))) {
+    if (isset($_POST['first_name']) && !empty($_POST['first_name'])) {
+        if (ctype_alpha(trim($_POST['first_name']))) {
             $user['first_name'] = $_POST['first_name'];
             $validation_first_name = 'valid';
         } else {
@@ -90,7 +90,6 @@ if (isset($_POST['submit'])) {
         }
     } else {
         $user['first_name'] = $_SESSION['first_name'];
-        $validation_first_name = 'valid';
     }
     /**
      * date is defined and date different than ""
@@ -132,7 +131,6 @@ if (isset($_POST['submit'])) {
         }
     } else {
         $user['gender'] = $_SESSION['gender'];
-        $validation_gender = "valid";
     }
 
     /**
@@ -145,9 +143,6 @@ if (isset($_POST['submit'])) {
             default: break;
         }
     }
-    print_r('user : ');
-    print_r($user);
-
 
     if (isset($data[trim($_SESSION['username'])])) {
         $data[$_SESSION['username']] = $user;
