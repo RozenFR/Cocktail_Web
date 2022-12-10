@@ -42,10 +42,12 @@ function likesUpdate() : void {
              * - Si un element n'est pas dans le Cookie, on supprime de la Session
              * - Si un element est dans le Cookie, on fait rien
              * */
-            foreach ($_SESSION['cocktails'] as $stl) {
-                if (!in_array($stl, $cookie_likes)) {
-                    $key = array_search($stl, $_SESSION['cocktails']);
-                    array_splice($_SESSION['cocktails'], $key, $key);
+            if(isset($_SESSION['cocktails'])) {
+                foreach ($_SESSION['cocktails'] as $stl) {
+                    if (!in_array($stl, $cookie_likes)) {
+                        $key = array_search($stl, $_SESSION['cocktails']);
+                        array_splice($_SESSION['cocktails'], $key, $key);
+                    }
                 }
             }
         }
