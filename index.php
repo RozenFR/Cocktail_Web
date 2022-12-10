@@ -29,20 +29,6 @@
         }
     }
 ?>
-<?php 
-    if(isset($_COOKIE['tempLikes'])) {
-        $likesIndex = $_COOKIE['tempLikes'];
-        $arrayLikes = explode(',', $likesIndex);
-        for($z = 0; $z < count($Recettes); $z++) {
-            if(in_array($z, $arrayLikes)) {
-                $likesAlpha[] = $Recettes[$z]['titre'];
-                usort($likesAlpha, 'strnatcasecmp');
-            }
-        }
-        setcookie("likesSortedAlpha", json_encode($likesAlpha));
-    }
-?>
-
 <?php
 $path = $_SERVER['DOCUMENT_ROOT'];
 $path .= "/PHP/updateLikes.php";

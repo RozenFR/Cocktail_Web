@@ -3,7 +3,75 @@
         margin-top: 60px;
         height: 100vh;
         width: 100vw;
-        display: grid;
-        grid-template-columns: 1fr 2fr;
+
+    }
+
+    #List {
+        width: calc(100vw - 2rem);
+        height: calc(100vh - 60px - 1rem);
+        max-height: calc(100vh - 60px - 1rem);
+        display: flex;
+        overflow-y: auto;
+        padding: 5px;
+        margin: 0 1rem 1rem 1rem;
+        scrollbar-color: var(--accent) var(--background-secondary);
+        scrollbar-width: thin;
+        background-color: var(--background-secondary);
+        border-radius: 0.25rem;
+    }
+    
+    #Left #Image {
+        max-width: 500px;
+        
+        max-height: 666px;
+        
+        border-radius: 0.25rem;
+        
+        background-size: cover;
+    }
+
+    #Image > div {
+        width: 500px;
+        height: 666px;
+        background-color: rgba(var(--obfuscate));
+    }
+
+    #Top {
+        height: calc(100% -  60px);
+        padding: 5px;
+    }
+
+    #Bottom {
+        height: 60px;
+        padding: 5px;
+    }
+
+    .like {
+        float: right;
+    }
+
+    .dislike {
+        float: right;
+        display: none;
+    }
+
+    #Right {
+        padding: 5px;
+    }
+
+    #Right ul li {
+        list-style-type: none;
+    }
+
+    #Right h1 {
+        font-size: 2rem;
+        text-transform: uppercase;
+    }
+
+    #Right h2 {
+        padding-top: 0.75rem;
+        font-size: 1.5rem;
+        font-variant: small-caps;
+        padding-bottom: 0.25rem;
     }
 }

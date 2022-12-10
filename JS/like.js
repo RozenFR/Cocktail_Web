@@ -1,6 +1,9 @@
 const dislike = Array.from(document.getElementsByClassName('dislike'));
 const like = Array.from(document.getElementsByClassName('like'));
 
+console.log(like);
+console.log(dislike);
+
 // ? Function getCookie takes in the name of the cookie, loops over all cookies split them by the delimiter ';' and returns the part after ${name}=
 function getCookie(name) {
     const value = `; ${document.cookie}`;
@@ -17,10 +20,13 @@ else {
     var liked = [];
 }
 
-
 // ? For each element in like, add an onclick event, when event is triggered, add the index of the element to liked (if not already present) then changes style accordingly, sort the array numerically and set the cookie tempLikes
 like.forEach((button, index) => {
     button.addEventListener("click", () => {
+        var url = document.location.href;
+        var urlArray = url.split('/');
+        var uri = urlArray[urlArray.length - 1];
+        uri = uri.split('?')[0];
         var id = Number (button.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[0].data);
         if(!liked.includes(id)) {
             liked.push(id);
@@ -36,6 +42,10 @@ like.forEach((button, index) => {
 // ? For each element in like, add an onclick event, when event is triggered, add the index of the element to liked (if not already present) then changes style accordingly, sort the array numerically
 dislike.forEach((button, index) => {
     button.addEventListener("click", () => {
+        var url = document.location.href;
+        var urlArray = url.split('/');
+        var uri = urlArray[urlArray.length - 1];
+        uri = uri.split('?')[0];
         var id = Number (button.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[0].data);
         if(liked.includes(id)) {
             liked.splice(liked.indexOf(id), 1);
@@ -67,11 +77,13 @@ function loadLikes() {
         } else if(uri == "search.php") {
             loadSearch(cookie_str);
         }
+        else if(uri == "product.php") {
+            loadProduct(cookie_str);
+        }
     }
 }
 
 function loadIndex(likes) {
-    console.log(like);
     likes.forEach(element => {
         dislike[element].style.display = "block";
         like[element].style.display = "none";
@@ -89,10 +101,17 @@ function loadSearch(likes) {
     for($z = 0; $z < dislike.length; $z++) {
         var id = Number (dislike[$z].parentNode.parentNode.childNodes[1].childNodes[1].childNodes[0].data);
         if(likes.includes(id)) {
-            console.log(true);
             dislike[$z].style.display = "block";
             like[$z].style.display = "none";
         }
+    }
+}
+
+function loadProduct(likes) {
+    var id = Number (dislike[0].parentNode.parentNode.childNodes[1].childNodes[1].childNodes[0].data);
+    if(likes.includes(id)) {
+        dislike[0].style.display = "block";
+        like[0].style.display = "none";
     }
 }
 
