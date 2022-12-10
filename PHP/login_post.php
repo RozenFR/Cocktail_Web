@@ -48,6 +48,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['first_name'] = $data[$username]['first_name'];
             $_SESSION['first_name'] = $data[$username]['first_name'];
             $_SESSION['date'] = $data[$username]['date'];
+            $_SESSION['gender'] = $data[$username]['gender'];
             $_SESSION['cocktails'] = $data[$username]['cocktails'];
             $_SESSION['likesUpdated'] = "no";
 
