@@ -60,7 +60,9 @@ likesUpdate();
     }
     ?>
     <article id="List">
-    <?php foreach($fav_array as $i) {
+    <?php 
+    if(isset($fav_array)) {
+        foreach($fav_array as $i) {
         $ingredients = $Recettes[$i]['index'];
         if(in_array($i, $fav_array)) { ?>
         <a class="List_Item"<?php
@@ -102,7 +104,7 @@ likesUpdate();
                 </div>
             </div>
         </a>
-        <?php }
+        <?php }}
     }
     ?>
     </article>

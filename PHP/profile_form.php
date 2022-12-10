@@ -34,19 +34,17 @@ include($path);
         </span>
 
 <!--    Password    -->
-        <span class="inputBox">
-            <input name="password" class="<?= $validation_password ?>" type="text"/>
-            <span title="required_span">
+        <span class="inputBox unrequired">
+            <input name="password" class="<?= $validation_password ?>" type="text" placeholder=" "/>
+            <span>
                 <legend>Nouveau Mot de passe</legend>
-                <legend class="required">Obligatoire</legend>
             </span>
         </span>
 
-        <span class="inputBox">
-            <input name="confirm_password" class="<?= $validation_password ?>" type="text"/>
-            <span title="required_span">
+        <span class="inputBox unrequired">
+            <input name="confirm_password" class="<?= $validation_password ?>" type="text" placeholder=" "/>
+            <span>
                 <legend>Confirmer Mot de passe</legend>
-                <legend class="required">Obligatoire</legend>
             </span>
         </span>
 
