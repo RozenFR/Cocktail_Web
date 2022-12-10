@@ -97,7 +97,7 @@
     }
 
     form[title="Register"] input:placeholder-shown {
-        border: var(--background-secondary) 1px solid;
+        border: var(--buttons) 1px solid;
     }
 
     form[title="Register"]>.inputBox>input:focus~span>legend {
