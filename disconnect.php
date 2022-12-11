@@ -8,7 +8,8 @@ $host = $_SERVER['HTTP_HOST'];
 $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 $extra = 'index.php';
 echo "<script type='text/javascript'>document.cookie = 'tempLikes=' + JSON.stringify([]);
-location.href ='http://". $host . $uri . "/" . $extra ."';</script>";
+                                    location.href ='http://". $host . $uri . "/" . $extra ."';
+                                    </script>";
 exit;
 
 ?>
