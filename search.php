@@ -47,11 +47,7 @@ likesUpdate();
     <?php
     $path = $_SERVER['DOCUMENT_ROOT'];
     $path .= "/PHP/header.php";
-    include_once($path)
-    ?>
-    <div id="Main" title="Search">
-        <article id="List">
-        <?php
+    include_once($path);
 
         /* Setup Regex et get */
         $reg_ingredient = '/[\"]?[a-zA-Z\s]+[\"]?/';
@@ -67,6 +63,7 @@ likesUpdate();
         $reg_pm = '/[a-zA-Z\s]+/';
         /* Setup search var */
         $splus = []; $sminus = [];
+
         foreach ($plus[0] as $item) {
             preg_match_all($reg_pm, $item, $temp);
             $splus[] = $temp[0][0];
@@ -77,11 +74,31 @@ likesUpdate();
             $sminus[] = $temp[0][0];
         }
 
-        $singredient = $ingredient[0][0];
+        $singredient = str_replace('"', '', $ingredient[0][0]);
 
         $counter = 0;
 
-        for($i = 0; $i < count($Recettes); $i++) {
+        echo '<div class="List_ingredient">
+                <div>Liste des aliments souhaités : ';
+                foreach ($splus as $item) {
+                    if ($splus[sizeof($splus) - 1] == $item)
+                        echo $item;
+                    else
+                        echo $item . ',';
+                }
+                echo '</div><br>';
+        echo '<div> Liste des aliments non souhaités : ';
+            foreach ($sminus as $item) {
+                if ($sminus[sizeof($sminus) - 1] == $item)
+                    echo $item . '+';
+                else
+                    echo $item . ',';
+            }
+        echo '</div></div>';
+        ?>
+    <div id="Main" title="Search">
+        <article id="List">
+        <?php for($i = 0; $i < count($Recettes); $i++) {
             $nbplus = sizeof($splus) + 1;
             $nbmoins = sizeof($sminus);
             $ttscore = sizeof($splus) + sizeof($minus);
@@ -90,7 +107,6 @@ likesUpdate();
 
             $r_wquotes = '/('.strtolower($singredient).')/';
             $r_quotes = str_replace('"', '', $r_wquotes);
-
             if (!preg_match($r_quotes, strtolower($Recettes[$i]['ingredients'])))
                 $nbplus--;
 

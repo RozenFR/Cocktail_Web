@@ -4,8 +4,24 @@
         height: 100vh;
     }
 
-    #Main {
+    .List_ingredient {
+        position: absolute;
+        width: 100%;
+        height: calc(50px);
+        display: flex;
+        flex-wrap: wrap;
+        max-height: calc(50px);
+        overflow-y: auto;
+        padding: 5px;
         margin-top: 60px;
+    }
+
+    .List_ingredient > div {
+        width: 100%;
+    }
+
+    #Main {
+        margin-top: 110px;
         height: 100vh;
         width: 100vw;
         display: grid;
