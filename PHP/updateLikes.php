@@ -7,7 +7,7 @@ include_once($path);
 function likesUpdate() : void {
     // Process Cookie
     if (isset($_COOKIE['tempLikes']))
-        $cookie_likes = json_decode($_COOKIE['tempLikes']);
+        $cookie_likes = array_values(json_decode($_COOKIE['tempLikes']));
 
     if (isset($_SESSION['username'])) {
 
@@ -61,14 +61,14 @@ function likesUpdate() : void {
                     unset($_SESSION['cocktails'][$key]);
                 }
             }
-            $_COOKIE['tempLikes'] = json_encode($_SESSION['cocktails']);
-            header("Set-Cookie: tempLikes=".json_encode($cookie_likes).";");
+            $_COOKIE['tempLikes'] = json_encode(array_values($_SESSION['cocktails']));
+            header("Set-Cookie: tempLikes=".json_encode(array_values($cookie_likes)).";");
         }
         // Edit file
-        $data[$_SESSION['username']]['cocktails'] = $_SESSION['cocktails'];
+        $data[$_SESSION['username']]['cocktails'] = array_values($_SESSION['cocktails']);
         file_put_contents('users.json', json_encode($data));
     }
 
-//    echo '<h1 style="position: absolute; margin-top: 25px; z-index: 100; background-color: black;"> Session : '.print_r($_SESSION['cocktails'], true).'</h1>';
+//    echo '<h1 style="position: absolute; margin-top: 25px; z-index: 100; background-color: black;"> Session : '.print_r(array_values($_SESSION['cocktails']), true).'</h1>';
 //    echo '<h1 style="position: absolute; margin-top: 50px; z-index: 100; background-color: black;"> Cookie : '.print_r(json_decode($_COOKIE['tempLikes']), true).'</h1>';
 }
