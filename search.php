@@ -52,27 +52,7 @@ likesUpdate();
     <div id="Main" title="Search">
         <article id="List">
         <?php
-//        /* Setup URL params in PHP */
-//        /* Setup "something in it" */
-//        $raw_content = $_GET['content'];
-//        $a_content = explode('"', $raw_content);
-//        $ingredient = $a_content[1];
-//
-//        /* Setup Filter '+' et '-' */
-//        $posfilter = [];
-//        $negfilter = [];
-//        if (count($a_content) > 1) {
-//            $raw_filter_content = substr($a_content[2], 1);
-//            $filter_content = explode(" ", $raw_filter_content);
-//            for ($j = 0; $j < count($filter_content); $j++) {
-//                echo '<h1 class=test>'.print_r($filter_content).'</h1>';
-//                if ($filter_content[$j][0] == '+')
-//                    $posfilter[] = $filter_content[$j];
-//                if ($filter_content[$j][0] == '-')
-//                    $negfilter[] = $filter_content[$j];
-//            }
-//        }
-//
+
         /* Setup Regex et get */
         $reg_ingredient = '/[\"]?[a-zA-Z\s]+[\"]?/';
         $reg_plus = '/[\+][\"]?[a-zA-Z\s]+[\"]?/';
@@ -99,31 +79,37 @@ likesUpdate();
 
         $singredient = $ingredient[0][0];
 
+        $counter = 0;
+
         for($i = 0; $i < count($Recettes); $i++) {
+            $nbplus = sizeof($splus) + 1;
+            $nbmoins = sizeof($sminus);
+            $ttscore = sizeof($splus) + sizeof($minus);
+
             $title = multiexplode(array(",", ":", "("), $Recettes[$i]['titre']);
 
-            $status = true;
             $r_wquotes = '/('.strtolower($singredient).')/';
             $r_quotes = str_replace('"', '', $r_wquotes);
 
             if (!preg_match($r_quotes, strtolower($Recettes[$i]['ingredients'])))
-                $status = false;
+                $nbplus--;
 
             foreach ($splus as $item) {
                 $r_pwquotes = '/('.strtolower($item).')/';
                 $r_pquotes = str_replace('"', '', $r_pwquotes);
                 if (!preg_match($r_pquotes, strtolower($Recettes[$i]['ingredients'])))
-                    $status = false;
+                    $nbplus--;
             }
 
             foreach ($sminus as $item) {
                 $r_mwquotes = '/('.strtolower($item).')/';
                 $r_mquotes = str_replace('"', '', $r_mwquotes);
                 if (preg_match($r_mquotes, strtolower($Recettes[$i]['ingredients'])))
-                    $status = false;
+                    $nbmoins--;
             }
 
-            if ($status) { ?>
+            if ($nbplus + $nbmoins != 0) {
+                $counter++;?>
                 <a class="List_Item"<?php
                     // ? Remove all punctuation
                     $title = multiexplode(array(",", ":", "(", ")"), $Recettes[$i]['titre']);
@@ -161,10 +147,14 @@ likesUpdate();
                                     </svg>
                                 </button>
                             </div>
+                            <div style="margin-left: auto; margin-right: 10px;"><h2>Score : <?= (($nbplus + $nbmoins)/$ttscore)*100 ?> %</h2></div>
                         </div>
                     </a>
             <?php } ?>
         <?php }
+        if ($counter == 0) {
+            echo "<h1>Problème dans votre requête : Recherche Impossible</h1>";
+        }
         ?>
         </article>
     </div>
