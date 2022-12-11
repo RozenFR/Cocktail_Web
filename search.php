@@ -82,17 +82,17 @@ likesUpdate();
                 <div>Liste des aliments souhaités : ';
                 foreach ($splus as $item) {
                     if ($splus[sizeof($splus) - 1] == $item)
-                        echo $item;
+                        echo strtolower($item);
                     else
-                        echo $item . ',';
+                        echo strtolower($item) . ', ';
                 }
                 echo '</div><br>';
         echo '<div> Liste des aliments non souhaités : ';
             foreach ($sminus as $item) {
                 if ($sminus[sizeof($sminus) - 1] == $item)
-                    echo $item . '+';
+                    echo strtolower($item);
                 else
-                    echo $item . ',';
+                    echo strtolower($item) . ', ';
             }
         echo '</div></div>';
         ?>
@@ -111,14 +111,14 @@ likesUpdate();
                 $nbplus--;
 
             foreach ($splus as $item) {
-                $r_pwquotes = '/('.strtolower($item).')/';
+                $r_pwquotes = '/('.$item.')/';
                 $r_pquotes = str_replace('"', '', $r_pwquotes);
                 if (!preg_match($r_pquotes, strtolower($Recettes[$i]['ingredients'])))
                     $nbplus--;
             }
 
             foreach ($sminus as $item) {
-                $r_mwquotes = '/('.strtolower($item).')/';
+                $r_mwquotes = '/('.$item.')/';
                 $r_mquotes = str_replace('"', '', $r_mwquotes);
                 if (preg_match($r_mquotes, strtolower($Recettes[$i]['ingredients'])))
                     $nbmoins--;
