@@ -1,8 +1,8 @@
 const dislike = Array.from(document.getElementsByClassName('dislike'));
 const like = Array.from(document.getElementsByClassName('like'));
 
-console.log(like);
-console.log(dislike);
+// console.log(like);
+// console.log(dislike);
 
 // ? Function getCookie takes in the name of the cookie, loops over all cookies split them by the delimiter ';' and returns the part after ${name}=
 function getCookie(name) {
@@ -69,7 +69,7 @@ function loadLikes() {
         var uri = urlArray[urlArray.length - 1];
         uri = uri.split('?')[0];
 
-        console.log(cookie_str);
+        // console.log(cookie_str);
         if(uri == "index.php") {
             loadIndex(cookie_str);
         } else if(uri == "favourites.php") {
