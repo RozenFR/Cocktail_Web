@@ -30,12 +30,13 @@
     }
 ?>
 <?php
-$path = $_SERVER['DOCUMENT_ROOT'];
-$path .= "/PHP/updateLikes.php";
-include_once($path);
+    $path = $_SERVER['DOCUMENT_ROOT'];
+    $path .= "/PHP/updateLikes.php";
+    include_once($path);
 
-// Run function each time page is refresh
-likesUpdate();
+    // Run function each time page is refresh
+    // todo - Fix bug where likes aren't rendered properly once you filter by ingredients
+    likesUpdate();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,11 +51,12 @@ likesUpdate();
         @import url('/CSS/index.css');
         @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@500&display=swap');
     </style>
-    <script defer src="/JS/theme.js"></script>
+
     <script src="/JS/jquery-3.6.1.min.js"></script>
+    <script defer src="/JS/theme.js"></script>
     <script defer src="/JS/like.js"></script>
 </head>
-<body onload="active();onThemeSwitch();onAccentSwitch();">
+<body onload="onThemeSwitch();active();onAccentSwitch();">
     <!-- Main Content -->
     <main>
         <!-- Header -->
