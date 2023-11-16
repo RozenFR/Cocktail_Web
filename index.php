@@ -17,16 +17,48 @@
 <?php
     $leafs = array();
     // ? This function returns all childrens (nodes & leafs) from the node $current in $array and modifies $leafs by reference 
-    function getLeaf($array, $current, &$leafs) {
+    function getChildrens($array, $current, &$leafs) {
         if(isset($array[$current]['sous-categorie'])) {
-            foreach($array[$current]['sous-categorie'] as $i => $item) {
+            foreach($array[$current]['sous-categorie'] as $index => $item) {
                 $leafs[] = $item;
-                getLeaf($array, $item, $leafs);
+                getChildrens($array, $item, $leafs);
             }
         }
         else if(!in_array($current, $leafs)) {
             $leafs[] = $current;
         }
+    }
+
+    function subCategory() {
+        global $Hierarchie, $current;
+        if(isset($Hierarchie[$current]['sous-categorie'])) {?>
+            <span>Sous-categorie</span>
+            <?php foreach($Hierarchie[$current]['sous-categorie'] as $index => $item) { ?>
+                <a href="/index.php?current=<?= $item; ?>"><?php print_r($item); ?></a>
+            <?php }
+        }
+    }
+
+    function superCategory() {
+        global $Hierarchie, $current;
+        if(isset($Hierarchie[$current]['super-categorie'])) { ?>
+            <span>Super-Categorie</span>
+            <?php foreach($Hierarchie[$current]['super-categorie'] as $i => $item) { ?>
+                <a href="/index.php?current=<?= $item; ?>"><?php print_r($item); ?></a>
+            <?php }
+        }
+    }
+    
+    function areRecipeIngredientsInLeafs($i, $ingredients) {
+        global $leafs;
+        $status = false;
+        for($k = 0; $k < count($ingredients); $k++) {
+            if(in_array($ingredients[$k], $leafs)) {
+                $status = true;
+
+            }
+        }
+        return $status;
     }
 ?>
 <?php
@@ -78,60 +110,38 @@
                                 $current = 'Aliment';
                             }
                             print_r($current);
-                            getLeaf($Hierarchie, $current, $leafs);
+                            getChildrens($Hierarchie, $current, $leafs);
                         ?>
                     </span>
                 </div>
                 <?php 
                     // ✗ Prints every sub category of the current aliment
-                    if(isset($Hierarchie[$current]['sous-categorie'])) {?>
-                        <span>Sous-categorie</span>
-                        <?php foreach($Hierarchie[$current]['sous-categorie'] as $i => $item) { ?>
-                            <a href="/index.php?current=<?php print_r($item);?>"><?php print_r($item); ?></a>
-                        <?php }
-                    }
+                    subCategory();
+                    
                     // ✗ Prints every super category of the current aliment
-                    if(isset($Hierarchie[$current]['super-categorie'])) { ?>
-                        <span>Super-Categorie</span>
-                        <?php foreach($Hierarchie[$current]['super-categorie'] as $i => $item) { ?>
-                            <a href="/index.php?current=<?php print_r($item);?>"><?php print_r($item); ?></a>
-                        <?php }
-                    }
+                    superCategory();
                 ?>
             </article>
             <article id="List">
                 <?php
-                    // ✗ For every recipes, if one of their ingreidient is in $leafs set $status to true
-                    for($i = 0; $i < count($Recettes); $i++) {
-                        $ingredients = $Recettes[$i]['index'];
-                        for($k = 0; $k < count($ingredients); $k++) {
-                            if(in_array($ingredients[$k], $leafs)) {
-                                $status = true;
-                                break;
-                            }
-                            else {
-                                $status = false;
-                            }
-                        }
+                    // ✗ For every recipes, if one of their ingredients is in $leafs set $status to true
+                    foreach($Recettes as $index => $item) {
+                        $ingredients = $Recettes[$index]['index'];
+                        $status = areRecipeIngredientsInLeafs($index, $ingredients);
+                        
                         // ✗ If $status is true, display every recipes with their title, list of ingredients and index
                         if($status) { ?>
-                        <a class="List_Item"<?php
+                        <?php 
                         // ? Remove all punctuation
-                        $title = multiexplode(array(",", ":", "(", ")"), $Recettes[$i]['titre']);
+                        $title = multiexplode(array(",", ":", "(", ")"), $Recettes[$index]['titre']);
                         // ? Slugify the first part of the title before any punctuation
-                        $title2 = rtrim(slug($title[0]), "-");
-                        // ? Add the image to the background with css styling
-                        echo "style='background-image:url(".'"'."/Photos/".strtolower($title2).".jpg".'"'.");'"; 
-                        echo 'href="/product.php?index='.$i.'"'; 
-                        ?>>
+                        $title2 = rtrim(slug($title[0]), "-"); 
+                        ?>
+                        <a class="List_Item" style='background-image:url("./Photos/<?= strtolower($title2) ?>.jpg")' href="/product.php?index=<?=$index?>">
                             <div class="List_content">
                                 <div class="Top">
-                                    <span class="index"><?php print_r($i); ?></span>
-                                    <legend>
-                                    <?php 
-                                        $title = multiexplode(array(",", ":", "("), $Recettes[$i]['titre']);
-                                        print_r($title[0]); 
-                                    ?></legend>
+                                    <span class="index"><?php print_r($index); ?></span>
+                                    <legend><?php print_r($title[0]); ?></legend>
                                 </div>
                                 <div class="Bottom">
                                     <ul title="Ingredient_Field">
